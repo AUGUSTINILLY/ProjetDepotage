@@ -1,0 +1,159 @@
+<div class="container-fluid " id="form">
+  <div class="content">
+    <div class="card">
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" [style.width.%]="progression">
+          {{ progression }}%
+        </div>
+      </div>
+
+        <ng-container *ngIf="progression === 0">
+          <h1 class="titre"> INSCRIPTION </h1>
+          <form [formGroup]="inscriptionForm">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="nomuser" class="form-label">Nom</label>
+                  <div class="input-group">
+                    <input type="text"   class="form-control"  formControlName="nom">
+
+                    <span class="input-group-text material-icons">
+                      personne
+                    </span>
+                  </div>
+                </div>
+                <div class="alert alert-danger" *ngIf="inscriptionForm.controls['nom'].invalid && inscriptionForm.controls['nom'].touched">
+                  le champs nom est réquis .
+                </div>
+              </div>
+
+
+
+              <div class="col">
+                <div class="form-group">
+                  <label for="nomuser" class="form-label">Prenom</label>
+                  <div class="input-group">
+                    <input type="text"   class="form-control"  formControlName="prenom">
+
+                    <span class="input-group-text material-icons">
+                      personne
+                    </span>
+                  </div>
+                </div>
+                <div class="alert alert-danger" *ngIf="inscriptionForm.controls['prenom'].invalid && inscriptionForm.controls['prenom'].touched">
+                  le champs prenom est réquis .
+                </div>
+              </div>
+            </div><br><br>
+
+
+
+            <div class="row">
+
+              <div class="col">
+                <div class="form-group">
+                  <label for="email" class="form-label">Email</label>
+                  <div class="input-group">
+                    <input type="email"  class="form-control"  formControlName="email">
+
+                    <span class="input-group-text material-icons">
+                      mail_outline
+                    </span>
+                  </div>
+                </div>
+                <div class="alert alert-danger" *ngIf="inscriptionForm.controls['email'].invalid && inscriptionForm.controls['email'].touched">
+                  le champs Email est réquis .
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group">
+                  <label for="email" class="form-label">Contact</label>
+                  <div class="input-group">
+                    <input type="tel"  class="form-control"  formControlName="contact">
+
+                    <span class="input-group-text material-icons">
+                      phone
+                    </span>
+                  </div>
+                </div>
+                <div class="alert alert-danger" *ngIf="inscriptionForm.controls['contact'].invalid && inscriptionForm.controls['contact'].touched">
+                  le champs Contact est réquis .
+                </div>
+
+              </div>
+            </div><br><br>
+
+
+
+            <div class="row">
+
+              <div class="col">
+                <div class="form-group">
+                  <label for="mdp" class="form-label">Mot de passe</label>
+                  <div class="input-group">
+                    <input type="password"  class="form-control"  formControlName="mdp">
+
+                    <span class="input-group-text material-icons">
+                      lock_open
+                    </span>
+                  </div>
+              </div>
+              <div class="alert alert-danger" *ngIf="inscriptionForm.controls['mdp'].invalid && inscriptionForm.controls['mdp'].touched">
+                le mot de passe est réquis .
+              </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group">
+                  <label for="mdp" class="form-label">Confirmer Mot de passe</label>
+                  <div class="input-group">
+                    <input type="password"  class="form-control"  formControlName="conf">
+
+                    <span class="input-group-text material-icons">
+                      lock_open
+                    </span>
+                  </div>
+              </div>
+              <div class="alert alert-danger" *ngIf="inscriptionForm.controls['conf'].invalid && inscriptionForm.controls['conf'].touched">
+                Confirmer votre mot de passe
+              </div>
+
+              </div>
+            </div>
+
+          <br>
+          <div class="boutton">
+            <button type="button" class="btn btn-primary btn-lg"  [disabled]="inscriptionForm.pristine || inscriptionForm.invalid" (click)="inscrire()">Enregistrer</button><span> <a routerLink="/connexion"> j'ai un compte</a></span>
+          </div>
+          </form>
+        </ng-container>
+
+        <ng-container *ngIf="progression === 50">
+          <h1 class="titre"> VALIDATION </h1>
+          <p>Vous avez recu un code de validation. Veuillez l'inscrire afin d'activer votre compte.</p>
+          <form [formGroup]="validationForm">
+            <div class="form-group">
+              <label for="code" class="form-label">Code</label>
+              <input type="text" class="form-control"  formControlName="code">
+            </div>
+            <div class="alert alert-danger" *ngIf="validationForm.controls['code'].invalid && validationForm.controls['code'].touched">
+              Veuillez inscrire votre code.
+            </div>
+
+          <br>
+          <button type="button" class="btn btn-primary"  (click)="validation()">Activer</button>
+
+          </form>
+        </ng-container>
+        <ng-container *ngIf="progression === 100">
+
+          <p class="phrase">Votre compte a bien été crée et activé avec succès </p>
+
+          <br>
+          <a type="button" class="btn btn-primary" id="btn" [routerLink]="['/connexion']">Connectez-vous</a>
+        </ng-container>
+    </div>
+
+  </div>
+</div>

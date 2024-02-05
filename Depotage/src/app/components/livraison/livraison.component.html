@@ -1,0 +1,169 @@
+<div class="container">
+  <h1>Engeristrement d'une livraison</h1>
+
+  <div class="content">
+    <div class="row">
+
+      <div class="col-4">
+        <div class="image">
+          <img src="../../../assets/images/a.jpg" alt="">
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="contenu">
+
+          <div class="formumaire">
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" [style.width.%]="progression">
+                {{ progression }}%
+              </div>
+            </div><br><br>
+            
+            <ng-container *ngIf="progression === 0">
+              <form  [formGroup]="fournisseurForm">
+                <h3>Informations du Fournisseur</h3>
+                <!-- Champs du fournisseur -->
+                <div class="row">
+                  <div class="col">
+                    <label for="prenom">Nom et prenom</label>
+                    <input type="text" class="form-control" formControlName="prenom" placeholder="Prénom" />
+                    <div class="alert alert-danger" *ngIf="fournisseurForm.controls['prenom'].invalid && fournisseurForm.controls['prenom'].touched">
+                      champs non rempli ou incorrect.
+                    </div> <br><br>
+                  </div>
+                  <div class="col">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" formControlName="email" placeholder="Email" />
+                    <div class="alert alert-danger" *ngIf="fournisseurForm.controls['email'].invalid && fournisseurForm.controls['email'].touched">
+                      champs non rempli ou incorrect.
+                    </div><br><br>
+
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label for="contact">Contact</label>
+                    <input type="tel" class="form-control" formControlName="contact" placeholder="Contact" />
+                    <div class="alert alert-danger" *ngIf="fournisseurForm.controls['contact'].invalid && fournisseurForm.controls['contact'].touched">
+                      champs non rempli ou incorrect.
+                    </div><br>
+                  </div>
+                  <div class="col">
+                    <label for="cnib">N° Cnib </label>
+                    <input type="text" class="form-control" formControlName="cnib" placeholder="cnib" />
+                    <div class="alert alert-danger" *ngIf="fournisseurForm.controls['cnib'].invalid && fournisseurForm.controls['cnib'].touched">
+                      champs non rempli ou incorrect.
+                    </div><br>
+                  </div>
+                </div>
+                <p>{{monNom}} </p>
+
+                <!-- button class="btn btn-primary" type="button" [disabled]="fournisseurForm.pristine || fournisseurForm.invalid" (click)="soumettreFournisseur()">Valider</button>  -->
+              </form>
+            </ng-container>
+
+
+
+            <ng-container *ngIf="progression === 50">
+              <form [formGroup]="carburantForm">
+                <h3>Informations du Carburant</h3>
+                <!-- Champs du carburant -->
+                <div class="row">
+                  <div class="col">
+                    <label for="date">Date</label>
+                    <input type="date" class="form-control" formControlName="date">
+                    <div class="alert alert-danger" *ngIf="carburantForm.controls['date'].invalid && carburantForm.controls['date'].touched">
+                      champs non rempli ou incorrect.
+                    </div><br><br>
+                  </div>
+                  <div class="col">
+                    <label for="heure">Heure</label>
+                    <input type="time" class="form-control" formControlName="heure">
+                    <div class="alert alert-danger" *ngIf="carburantForm.controls['heure'].invalid && carburantForm.controls['heure'].touched">
+                      champs non rempli ou incorrect.
+                    </div><br><br>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <label for="quantite">Quantité</label>
+                    <input  type="number" class="form-control" formControlName="quantite" placeholder="Quantité" />
+                    <div class="alert alert-danger" *ngIf="carburantForm.controls['quantite'].invalid && carburantForm.controls['quantite'].touched">
+                      champs non rempli ou incorrect.
+                    </div><br><br>
+                  </div>
+                  <div class="col">
+                    <label for="densite">Densité</label>
+                    <input type="number" class="form-control" formControlName="densite" placeholder="Densité" />
+                    <div class="alert alert-danger" *ngIf="carburantForm.controls['densite'].invalid && carburantForm.controls['densite'].touched">
+                      champs non rempli ou incorrect.
+                    </div><br><br>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col">
+                    <label for="prodQuantite">Nature du Carburant</label><br>
+                  <select class="form-select" name="" id="">
+                    <option value=""> gazoil</option>
+                    <option value=""> Super 91</option>
+                  </select>                
+                  </div>
+                  <div class="col">
+                    <label>
+                      <input class="form-check-input is-valid" type="checkbox" formControlName="conforme" /> Conforme aux exigences réglementaires
+                    </label>
+                    <div class="alert alert-danger" *ngIf="carburantForm.controls['conforme'].invalid && carburantForm.controls['conforme'].touched">
+                      Veuillez cochez la case pour confirmer.
+                    </div><br><br>
+    
+                  </div>
+                </div>
+                
+                <!-- button class="btn btn-primary" type="button" [disabled]="carburantForm.pristine || carburantForm.invalid" (click)="soumettreCarburant()">Valider</button> -->
+              </form>
+            </ng-container>
+
+
+
+            
+
+            <ng-container *ngIf="progression === 100">
+
+            </ng-container><br><br>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <button (click)="decrementtProgression()" class="float-start">
+                  <span class="material-icons">
+                    chevron_left
+                  </span>
+                </button>
+              </div>
+              <div class="col">
+                <button (click)="enregistrerLivraison()" class="btn btn-primary" [disabled]="progression != 100 || carburantForm.invalid || fournisseurForm.invalid">Enregistrer la livraison</button>
+
+              </div>
+              <div class="col">
+                <button (click)="incrementProgression()" class="float-end">
+                  <span class="material-icons">
+                    chevron_right
+                  </span>
+                </button>
+              </div>
+            </div>
+            
+            
+            
+          </div>
+        </div>
+    </div>
+    
+
+    </div>
+  </div>
+</div>

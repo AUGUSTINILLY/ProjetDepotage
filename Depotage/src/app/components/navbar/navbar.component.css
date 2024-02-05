@@ -1,0 +1,24 @@
+header{
+  background-color: #2f82ee;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+nav{
+  top: 55px;
+  left: 0;
+  position: fixed;
+  height: 100vh;
+  width: 160px;
+}
+.user img{
+  border-radius: 15px;
+  margin-right: 20px;
+  width: 40px;
+  height: auto;
+}
+.btn{
+  margin-left: 10px;
+}

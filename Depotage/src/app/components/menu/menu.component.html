@@ -1,0 +1,23 @@
+<div class="container">
+  <nav id="sidebarMenu" >
+    <div class="position-sticky pt-3">
+      <ul class="nav flex-column">
+        <img src="../../../assets/images/logo.jpeg" alt="">
+        <li class="nav-item">
+          <a routerLink="dahsbord" class="nav-link active" aria-current="page"><span data-feather="home"></span>DASHBORD <span></span></a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="livraison" class="nav-link"><span data-feather="users" class="material-icons"></span>LIVRAISON</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="rapport" class="nav-link"><span data-feather="bar-chart-2"></span>RAPPORT</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/liste']" class="nav-link"><span data-feather="layers"></span>HISTORIQUE</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+</div>

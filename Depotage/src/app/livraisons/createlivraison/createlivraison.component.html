@@ -1,0 +1,142 @@
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="card">
+      
+        <h1>Enregistrement du depotage</h1>
+      
+      <div class="row">
+      <div class="card-body">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" [style.width.%]="progressBar">
+            {{ progressBar }}%
+          </div>
+        </div><br><br>
+
+
+          <form #f="ngForm" (ngSubmit)="save()">
+            <div class="row">
+              <ng-container *ngIf="progression === 0">
+                <form [formGroup]="fournisseurForm">
+                  <b>Informations du fournisseur</b><br><br>
+                <div class="form-row">
+                  <label for="livNom">Nom du fournisseur</label>
+                  <input type="text" [(ngModel)]="depot.livNom" class="form-control" name="livNom" required="">
+                </div><br><br>
+                <div class="form-row">
+                  <label for="livemail">Email du fournisseur</label>
+                  <input type="email" [(ngModel)]="depot.livemail" class="form-control" name="livemail" required="">
+                </div><br><br>
+                <div class="form-row">
+                  <label for="livContact">Contact du fournisseur</label>
+                  <input type="tel" [(ngModel)]="depot.livContact" class="form-control" name="livContact" required="">
+                </div>
+                </form>
+              </ng-container>
+
+              <ng-container *ngIf="progression === 33">
+                <form [formGroup]="fournisseurForm">
+
+                </form>
+              </ng-container>
+
+              <ng-container *ngIf="progression === 66">
+                <form [formGroup]="fournisseurForm">
+
+                </form>
+              </ng-container>
+
+              <ng-container *ngIf="progression === 100">
+
+              </ng-container>
+            <div class="col-3"  >
+            
+          </div>
+          <div class="col-9" >
+            <div class="row">
+              <b>Informations du Carburant</b><br><br>
+
+              <div class="col-4">
+
+                <div class="form-row">
+                  <label for="prodQuantite">Quantité</label>
+                  <input type="number" [(ngModel)]="depot.prodQuantite" class="form-control" name="prodQuantite" required="">
+                </div><br><br>
+                <div class="form-row">
+                  <label for="prodQuantite">Densité</label>
+                  <input type="number" [(ngModel)]="depot.prodDensite" class="form-control" name="prodDensite" required="">
+                </div><br><br>
+                <div class="form-row">
+                  <label for="prodQuantite">Valide </label><br>
+                  <input class="form-check-input is-valid" type="checkbox" [(ngModel)]="depot.prodConforme"  name="prodConforme" required>
+                </div><br><br>
+              </div>
+              <div class="col-4">
+                <div class="form-row">
+                  <label for="prodQuantite">Nature du Carburant</label><br>
+                  <select name="" id="">
+                    <option value=""> gazoil</option>
+                    <option value=""> Super 91</option>
+                  </select>
+                </div><br><br>
+                <div class="form-row">
+                  <label for="prodQuantite">volume initial</label>
+                  <input type="number"  class="form-control" name="prodDensite" >
+                </div><br><br>
+                <div class="form-row">
+                  <label for="prodQuantite">volume final</label>
+                  <input type="number"  class="form-control" name="prodDensite" >
+                </div><br><br>
+              </div>
+              <div class="col-4">
+                <div class="form-row">
+                  <label for="prodQuantite">Date</label>
+                  <input type="date"  class="form-control" name="prodDensite" >
+                </div><br><br>
+                <div class="form-row">
+                  <label for="prodQuantite">Heure</label>
+                  <input type="time"  class="form-control" name="prodDensite" >
+                </div><br><br>
+                <div class="form-row">
+                  <label for="prodQuantite">Densité</label>
+                  <input type="number"  class="form-control" name="prodDensite" >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <button (click)="decrementtProgression()" class="float-start">
+                  <span class="material-icons">
+                    chevron_left
+                  </span>
+                </button>
+              </div>
+              <div class="col">
+                <button type="submit" class="btn btn-outline-primary"  [disabled]="f.invalid"> Enregistrer </button>
+              </div>
+              <div class="col">
+                <button (click)="incrementProgression()" class="float-end">
+                  <span class="material-icons">
+                    chevron_right
+                  </span>
+                </button>
+              </div>
+            </div>
+            
+            
+            
+          </div>
+
+
+          </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
