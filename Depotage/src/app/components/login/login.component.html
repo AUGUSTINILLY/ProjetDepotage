@@ -1,48 +1,7 @@
-<!--
-  div class="container-fluid" id="form">
-  <div class="content">
-    <div class="row">
-
-      <div class="col-7">
-          <form #f="ngForm" action="post" >
-            <h1 class="titre"> CONNEXION </h1>
-
-
-              <div class="form-group">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" [(ngModel)]="user.email" class="form-control" name="email" ngModel required #e="ngModel">
-              </div>
-              <div class="alert alert-danger" *ngIf="e.invalid && e.touched">
-                le champs Email est réquis .
-              </div>
-              <br>
-              <div class="form-group">
-                  <label for="Password" class="form-label">Mot de passe</label>
-                  <input type="password" [(ngModel)]="user.mdp" class="form-control" name="mdp" ngModel required #mp="ngModel">
-              </div>
-              <div class="alert alert-danger" *ngIf="mp.invalid && mp.touched">
-                le mot de passe est réquis .
-              </div>
-              <br>
-              <button type="submit" class="btn btn-primary" [disabled]="f.invalid" (click)="login()">Se Connecter</button><span> <a routerLink="/inscription"> je n'ai pas de compte</a></span>
-          </form>
-      </div>
-      <div class="col-5">
-        <div class="image">
-          <img src="../../../assets/images/b.jpg" alt="">
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-</div
--->
 <div class="container">
+  <h1 class="titre"> CONNEXION </h1>
   <div class="card">
-    <div class="card-header text-white bg-info">
-      <h1 class="titre"> CONNEXION </h1>
-    </div>
+    
     <div class="card-body">
       <div class="row">
         <div class="col donnees">
@@ -78,9 +37,9 @@
               <button type="submit" class="btn btn-primary" [disabled]="f.invalid" (click)="login()">Se Connecter</button><span> <a routerLink="/inscription"> je n'ai pas de compte</a></span>
           </form>
         </div>
-        <div class="col">
-          <div class="image">
-            <img src="../../../assets/images/b.jpg" alt="">
+        <div class="col" id="img1">
+          <div class="image" >
+            
           </div>
         </div>
       </div>

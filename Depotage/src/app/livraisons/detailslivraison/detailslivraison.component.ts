@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Depot } from 'src/app/models/depot';
-import { Livraison } from 'src/app/models/livraison';
 import { LivaisonService } from 'src/app/services/livaison.service';
 
 @Component({
@@ -12,7 +11,6 @@ import { LivaisonService } from 'src/app/services/livaison.service';
 export class DetailslivraisonComponent implements OnInit{
 
   id: number=0;
-  employee: Livraison= new Livraison;
   depot: Depot = new Depot();
   constructor(private route: ActivatedRoute,private router: Router,
     private livraisonService: LivaisonService) { }
@@ -22,10 +20,10 @@ export class DetailslivraisonComponent implements OnInit{
     this.id = +this.route.snapshot.params['id'];
 
      this.getdepot(this.id);
-    
+
   }
 
-  
+
 
   list(){
     this.router.navigate(['liste']);

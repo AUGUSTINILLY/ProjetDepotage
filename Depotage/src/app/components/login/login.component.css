@@ -1,43 +1,7 @@
-/*.content{
-  margin: 5%;
-}
-.row{
-  margin-top: 100px;
-}
-
-.titre{
-  width:max-content;
-  margin-left: 30%;
-  margin-bottom: 20px;
-  border-bottom: 2px solid;
-}
-form{
-  width: 100%;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.993);
-}
-.form-control{
-  background-color: rgba(172, 172, 169, 0.705);
-}
-span{
-  margin-left: 50px;
-}*/
-.image{
-  width: 100%;
-  height: 100%;
-}
-img
-{
-  max-width: 350px;
-  height: 370px;
-  margin-left: 0;
-  border-radius: 10px;
-}
 .card{
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
-  margin-top: 10%;
   margin-bottom: 10%;
 }
 .donnees{
@@ -48,6 +12,12 @@ h1{
   margin-left: 30%;
   margin-right: 30%;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 50px;
+}
+#img1{
+  background-image: url('../../../assets/images/b.jpg');
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la zone du conteneur */
+  height: auto;
 }
 

@@ -11,6 +11,7 @@ import { DeletelivraisonComponent } from './livraisons/deletelivraison/deleteliv
 import { ListelivraisonComponent } from './livraisons/listelivraison/listelivraison.component';
 import { DetailslivraisonComponent } from './livraisons/detailslivraison/detailslivraison.component';
 import { LivraisonComponent } from './components/livraison/livraison.component';
+import { DepotageComponent } from './components/depotage/depotage.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'connexion', pathMatch: 'full'},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'delete/{id}', component: DeletelivraisonComponent},
   {path: 'liste', component: ListelivraisonComponent},
   {path: 'details/:id', component: DetailslivraisonComponent},
+  {path: 'depotage', component: DepotageComponent},
 
 
 ];

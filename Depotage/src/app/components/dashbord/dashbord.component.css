@@ -1,0 +1,31 @@
+/*.container{
+  background-image: url('../../../assets/images/citerne.jpg');
+  background-repeat: no-repeat; 
+  background-size: cover; 
+
+  height: 100vh;
+}*/
+#img1, #img2,#img3,#img4{
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la zone du conteneur */
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+}
+#img1{
+  background-image: url('../../../assets/images/citerne.jpg');
+  
+}
+#img2{
+  background-image: url('../../../assets/images/63f600dc356aa.png');
+  
+}
+#img3{
+  background-image: url('../../../assets/images/pompe_sodigaz.png');
+  
+}
+#img4{
+  background-image: url('../../../assets/images/photo.jpg');
+  
+}
+

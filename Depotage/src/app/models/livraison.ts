@@ -1,5 +1,10 @@
+import { Personne } from "./livreur";
+import { Produit } from "./produit";
+
 export class Livraison{
-  id: number = 0;;
-  nom: string='';
-  quantite: number =0;
+  idLivraison: number = 0;;
+  date: string='';
+  heure: string='';
+  quantite: number= 0;
+  personne: Personne= new Personne();
 }

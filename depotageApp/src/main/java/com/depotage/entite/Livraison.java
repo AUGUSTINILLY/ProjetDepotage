@@ -6,40 +6,50 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+import java.util.Date;
+import java.util.Timer;
+
+
 @Entity
-@Table(name = "livraison")
-public class Livraison extends  Base{
+@Table(name = "Livraison")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Livraison {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private int quantite;
-    private String nom;
+    private String date;
+    private String heure;
+    public double quantite;
 
-    public int getId() {
-        return (int) id;
+    public long getId() {
+        return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getQuantite() {
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getHeure() {
+        return heure;
+    }
+
+    public void setHeure(String heure) {
+        this.heure = heure;
+    }
+
+    public double getQuantite() {
         return quantite;
     }
 
-    public void setQuantite(int quantite) {
+    public void setQuantite(double quantite) {
         this.quantite = quantite;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
     }
 }

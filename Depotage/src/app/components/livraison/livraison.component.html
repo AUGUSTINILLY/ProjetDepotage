@@ -18,11 +18,10 @@
                 {{ progression }}%
               </div>
             </div><br><br>
-            
+
             <ng-container *ngIf="progression === 0">
               <form  [formGroup]="fournisseurForm">
                 <h3>Informations du Fournisseur</h3>
-                <!-- Champs du fournisseur -->
                 <div class="row">
                   <div class="col">
                     <label for="prenom">Nom et prenom</label>
@@ -57,9 +56,8 @@
                     </div><br>
                   </div>
                 </div>
-                <p>{{monNom}} </p>
 
-                <!-- button class="btn btn-primary" type="button" [disabled]="fournisseurForm.pristine || fournisseurForm.invalid" (click)="soumettreFournisseur()">Valider</button>  -->
+                 <button class="btn btn-primary" type="button" [disabled]="fournisseurForm.pristine || fournisseurForm.invalid" (click)="soumettreFournisseur()">Valider</button>
               </form>
             </ng-container>
 
@@ -68,7 +66,6 @@
             <ng-container *ngIf="progression === 50">
               <form [formGroup]="carburantForm">
                 <h3>Informations du Carburant</h3>
-                <!-- Champs du carburant -->
                 <div class="row">
                   <div class="col">
                     <label for="date">Date</label>
@@ -105,13 +102,16 @@
 
 
                 <div class="row">
-                  <div class="col">
-                    <label for="prodQuantite">Nature du Carburant</label><br>
-                  <select class="form-select" name="" id="">
-                    <option value=""> gazoil</option>
-                    <option value=""> Super 91</option>
-                  </select>                
-                  </div>
+                  <!--div class="col">
+                    <label for="cout">Nature du Carburant</label>
+                    <input type="number" class="form-control" formControlName="cout" placeholder="cout" />
+
+                    select class="form-select" name="" id="">
+                      <option value=""> gazoil</option>
+                      <option value=""> Super 91</option>
+                    </select
+
+                  </div-->
                   <div class="col">
                     <label>
                       <input class="form-check-input is-valid" type="checkbox" formControlName="conforme" /> Conforme aux exigences réglementaires
@@ -119,17 +119,16 @@
                     <div class="alert alert-danger" *ngIf="carburantForm.controls['conforme'].invalid && carburantForm.controls['conforme'].touched">
                       Veuillez cochez la case pour confirmer.
                     </div><br><br>
-    
+
                   </div>
                 </div>
-                
-                <!-- button class="btn btn-primary" type="button" [disabled]="carburantForm.pristine || carburantForm.invalid" (click)="soumettreCarburant()">Valider</button> -->
+
               </form>
             </ng-container>
 
 
 
-            
+
 
             <ng-container *ngIf="progression === 100">
 
@@ -156,13 +155,13 @@
                 </button>
               </div>
             </div>
-            
-            
-            
+
+
+
           </div>
         </div>
     </div>
-    
+
 
     </div>
   </div>

@@ -24,6 +24,12 @@ import { DeletelivraisonComponent } from './livraisons/deletelivraison/deleteliv
 import { LivraisonComponent } from './components/livraison/livraison.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
+import { DepotageService } from './services/depotage';
+import { DepotageComponent } from './components/depotage/depotage.component';
+import { CuveService } from './services/cuve';
+import { CategorieService } from './services/categorie';
+import { CarbuurantService } from './services/carburant';
+import { PersonneService } from './services/personne';
 
 @NgModule({
   declarations: [
@@ -41,6 +47,7 @@ import { MaterialModule } from './modules/material/material.module';
     UpdatelivraisonComponent,
     ListelivraisonComponent,
     DeletelivraisonComponent,
+    DepotageComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +58,7 @@ import { MaterialModule } from './modules/material/material.module';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [UtilisateurService, UserService,LivaisonService],
+  providers: [UtilisateurService, UserService,LivaisonService,DepotageService,CuveService,CategorieService,CarbuurantService,PersonneService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

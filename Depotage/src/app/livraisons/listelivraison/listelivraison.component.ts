@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Depot } from 'src/app/models/depot';
-import { Livraison } from 'src/app/models/livraison';
+import { Depotage } from 'src/app/models/depotage';
 import { LivaisonService } from 'src/app/services/livaison.service';
 
 @Component({
@@ -10,8 +10,9 @@ import { LivaisonService } from 'src/app/services/livaison.service';
   templateUrl: './listelivraison.component.html',
   styleUrls: ['./listelivraison.component.css']
 })
+
 export class ListelivraisonComponent implements OnInit{
-  depots?: Observable<Depot[]>;
+  depots: Depotage[]= [];
 
   constructor(private livraisonService: LivaisonService,
     private router: Router) {}
@@ -21,7 +22,13 @@ export class ListelivraisonComponent implements OnInit{
   }
 
   liste() {
-    this.depots = this.livraisonService.getLivraisonList();
+    this.depots = [];
+    this.livraisonService.getLivraisonList().subscribe(
+      result => {
+        this.depots = result;
+        console.log(this.depots);
+      }
+    );
   }
 
   deleteEmployee(id: number) {

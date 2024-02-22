@@ -1,46 +1,46 @@
 <div class="container">
   <div class="row ligne my-sm-3" >
     <div class="col mt-sm-2 re">RECHERCHE</div>
-    <div class="col"><input type="date" class="form-control recherche"></div>
+    <div class="col">
+      <mat-form-field>
+        <input matInput [matDatepicker]="datePicker">
+        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
     <div class="col"><button class="btn btn-outline-success"> Rechercher</button></div>
-
-
   </div>
 
-  <h2>Historique des livraisons</h2>
+
+      <h2>Historique des livraisons</h2>
 
 
-  <div class="row" *ngFor="let depot of depots | async">
-    <a [routerLink]="'/details/' + depot.id">
-      <div class="card my-sm-3">
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-  
-              <p> Date: 12 janvier 2024</p>
-              <p> livreur : <b>{{depot.livNom}}</b></p>
-              <p>E-mail: <b>{{depot.livemail}}</b></p>
-              <p>Contact: <b>{{depot.livContact}}</b></p>
-  
-            </div>
-            <div class="col">
-  
-              <p>produit: <b>Gazoil</b></p>
-              <p> quantité livré: <b>{{depot.prodQuantite}}</b> </p>
-              <p>Densité : <b>{{depot.prodDensite}} </b></p>
-  
-            </div>
-            <div class="col">
-  
-              <button (click)="deleteEmployee(depot.id)" class="btn btn-danger">Delete</button>
-              <a [routerLink]="'/details/' + depot.id" class="btn btn-info" style="margin-left: 10px">Details</a>
-  
+      <!--div class="row" *ngFor="let depot of depots | async">
+        <a class="element" [routerLink]="'/details/' + depot.id">
+          <div class="card my-sm-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <p> Date: 12 janvier 2024</p>
+                  <p> livreur : <b>{{depot.livNom}}</b></p>
+                  <p>E-mail: <b>{{depot.livemail}}</b></p>
+                  <p>Contact: <b>{{depot.livContact}}</b></p>
+
+                </div>
+                <div class="col">
+
+                  <p>produit: <b>Gazoil</b></p>
+                  <p> quantité livré: <b>{{depot.prodQuantite}}</b> </p>
+                  <p>Densité : <b>{{depot.prodDensite}} </b></p>
+
+                </div>
+
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </a>
-    
+        </a>
 
-  </div>
+
+      </div-->
+
 </div>
