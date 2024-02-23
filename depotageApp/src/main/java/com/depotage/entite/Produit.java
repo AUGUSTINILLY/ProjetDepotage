@@ -12,11 +12,15 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "produit")
-public class Produit {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TYPE", length = 4 )
+public abstract class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idProduit;
     private String descriptionProduit;
+    @ManyToOne
+    private Categorie typeProduit;
 
     public long getIdProduit() {
         return idProduit;

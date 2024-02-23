@@ -19,8 +19,8 @@ public class Categorie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idCategorie;
     private String nomCategorie;
-    @OneToMany(mappedBy = "categorie", fetch = FetchType.LAZY)
-    private Collection<Carburant> carburant;
+    @OneToMany(mappedBy = "typeProduit", fetch = FetchType.LAZY)
+    private Collection<Produit> typeProduit;
 
 
 

@@ -3,6 +3,8 @@ package com.depotage.entite;
 import jakarta.persistence.*;
 import org.hibernate.mapping.List;
 
+import java.util.Collection;
+
 @Entity
 @Table(name = "livreur")
 public class Livreur {
@@ -17,6 +19,9 @@ public class Livreur {
     @JoinColumn(name = "CONTACT")
 
     private String contactLivreur;
+    @OneToMany(mappedBy = "livreur", fetch = FetchType.LAZY)
+    private Collection<Livraison> livraison;
+
 
 
 

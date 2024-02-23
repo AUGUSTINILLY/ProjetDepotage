@@ -3,11 +3,9 @@ package com.depotage.entite;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Depotage")
+//@Table(name = "Depotage")
+@DiscriminatorValue("DEPO")
 public class Depotage  extends Livraison{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idDepotage;
     private double densite;
     private double temperatue;
     private  double coullage;
@@ -32,14 +30,6 @@ public class Depotage  extends Livraison{
 
     public void setPersonne(Livreur livreur) {
         this.livreur = livreur;
-    }
-
-    public Long getIdDepotage() {
-        return idDepotage;
-    }
-
-    public void setIdDepotage(Long idDepotage) {
-        this.idDepotage = idDepotage;
     }
 
     public Livreur getLivreur() {
