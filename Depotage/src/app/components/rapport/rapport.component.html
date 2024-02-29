@@ -1,7 +1,60 @@
 <div class="container">
-  <div class="row">
-    <div class="content">
-      <p>rapport works!</p>
+  <div class="card">
+    <div class="row">
+      <div class="col"><p id="img1"></p></div>
+      <div class="col"><h1><b>Rapport de Depotage</b></h1> </div>
+      <div class="col"></div>
     </div>
-  </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <p>Dépotage du {{depotage.date}} à {{depotage.heure}} </p><br><p>Le dépotage a été receptionné par Mr/Mme Alassane Ouedraogo et livré par Mr/mme {{depotage.livreur.nomLivreur}}</p><br>
+          <p>quanté de carburant livré : {{depotage.quantite}}</p>
+        </div>
+        <div class="col">
+          <p>carburant de type {{depotage.produit.nomProduit}} </p><br><p>densité : {{depotage.densite}} température {{depotage.temperatue}} </p><br>
+        </div>
+      </div><br><br>
+
+
+
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="row">Le Gérant</div><br><br>
+        <div class="row"></div><br><br>
+        <div class="row">Mr Alassane Ouedraogo</div>
+      </div>
+      <div class="col"></div>
+      <div class="col">
+        <div class="row">Le Livreur</div><br><br>
+        <div class="row"></div><br><br>
+        <div class="row">{{depotage.livreur.nomLivreur}}</div>
+      </div>
+    </div><br>
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <a class="btn btn-secondary " [routerLink]="'/modifier/' + depotage.id">Modifier</a>
+
+          </div>
+          <div class="col">
+            <button (click)="deleteDepot(depotage.id)" class="btn btn-danger">Delete</button>
+
+          </div>
+          <div class="col">
+            <button (click)="deleteDepot(depotage.id)" class="btn btn-success">Imprimer</button>
+
+          </div>
+          <div class="col">
+            <a [routerLink]="['/historique']" class="btn btn-primary">Back to Depots List</a>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
 </div>
+

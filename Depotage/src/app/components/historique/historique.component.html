@@ -1,7 +1,50 @@
 <div class="container">
-  <div class="row">
-    <div class="content">
-      <p>historique works!</p>
+  <div class="row ligne my-sm-3" >
+    <div class="col mt-sm-2 re">RECHERCHE</div>
+    <div class="col">
+      <!-- mat-form-field>
+        <input matInput [matDatepicker]="datePicker">
+        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
+      </mat-form-field -->
+      <form>
+        <input type="datetime" [(ngModel)]="numeroFiltre" name="nueroFiltre" class="form-control" placeholder="rechercher par la date">
+      </form>
     </div>
+    <div class="col"><button class="btn btn-outline-success"> Rechercher</button></div>
   </div>
+
+
+      <h2>Historique des livraisons</h2>
+
+
+      <div class="row" *ngFor="let depotage of depotages">
+        <div *ngIf="depotage.date == numeroFiltre || numeroFiltre == null">
+            <div class="card my-sm-3">
+              <div class="card-body" >
+                <div class="row">
+                  <div class="col">
+                    <p>ID :{{depotage.id}} </p>
+                    <p> Date: {{depotage.date}}</p>
+                    <p> livreur : <b>{{depotage.livreur.nomLivreur}}</b></p>
+                    <p>E-mail: <b>{{depotage.livreur.emailLivreur}}</b></p>
+                    <p>Contact: <b>{{depotage.livreur.contactLivreur}}</b></p>
+
+                  </div>
+                  <div class="col">
+
+                    <p>produit: <b>{{depotage.produit.nomProduit}}</b></p>
+                    <p> quantité livré: <b>{{depotage.quantite}}</b> </p>
+                    <p>Densité : <b>{{depotage.densite}} </b></p>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+
+      </div>
 </div>

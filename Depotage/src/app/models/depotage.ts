@@ -1,13 +1,15 @@
+import { Produit } from './produit';
 import { Carburant } from "./carburant";
 import { Cuve } from "./cuve";
 import { Livreur } from "./livreur";
 
 export class Depotage{
-  idLivraison: number = 0;;
+  id: number = 0;;
   date: string='';
   heure: string='';
   quantite: number= 0;
   livreur: Livreur= new Livreur();
+  produit : Produit = new Produit();
   densite: number = 0;
   temperatue: number = 0;
   coullage: number = 0;

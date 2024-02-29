@@ -11,32 +11,21 @@ export class PersonneService {
 
   constructor(private http: HttpClient) { }
 
-  getLivraison(id: number): Observable<any> {
+  getLivreur(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  createLivraison(depot: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, depot);
+  createLivreur(livreur: Livreur): Observable<Livreur> {
+    return this.http.post<Livreur>(this.baseUrl, livreur);
   }
 
-  creerLivraison(fournisseurData: Object, carburantData: Object): Observable<Object> {
-    const depot = {
-      fournisseur: fournisseurData,
-      carburant: carburantData
-    };
-    return this.http.post(`${this.baseUrl}`, depot);
-  }
 
-  updateLivraison(id: number, value: any): Observable<Object> {
+  updateLivreur(id: number, value: any): Observable<Object> {
     return this.http.put(`${this.baseUrl}/${id}`, value);
   }
 
-  deleteLivraison(id: number): Observable<any> {
+  deleteLivreur(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
-  }
-
-  getLivraisonList(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
   }
   public getAllLivreurs =(): Observable<Livreur[]> =>{
     return this.http.get<Livreur[]>(this.baseUrl);

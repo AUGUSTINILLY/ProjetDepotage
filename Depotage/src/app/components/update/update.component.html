@@ -1,0 +1,112 @@
+<div class="container">
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+        <h3>Update Depot</h3>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="update()">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date" name="date" [(ngModel)]="depotage.date" required>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="heure">Heure:</label>
+                <input type="time" class="form-control" id="heure" name="heure" [(ngModel)]="depotage.heure" required>
+              </div>
+            </div>
+          </div><br><br>
+          <h2> Informations du Livreur</h2>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="nomLivreur">Nom du Livreur:</label>
+                <input type="text" class="form-control" id="nomLivreur" name="nomLivreur" [(ngModel)]="nouveauLivreur.nomLivreur" required>
+              </div>
+              <div class="form-group">
+                <label for="emailLivreur">Email du Livreur:</label>
+                <input type="email" class="form-control" id="emailLivreur" name="emailLivreur" [(ngModel)]="nouveauLivreur.emailLivreur" required>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="contactLivreur">Contact du Livreur:</label>
+                <input type="text" class="form-control" id="contactLivreur" name="contactLivreur" [(ngModel)]="nouveauLivreur.contactLivreur" required>
+              </div>
+            </div>
+          </div><br><br>
+          <h2>Informations sur le carburant</h2>
+          <div class="row">
+            <div class="col">
+              <div class="mb-3">
+                <label for="quantite" class="form-label">Quantite : </label>
+                <input [(ngModel)]="depotage.quantite" type="number" class="form-control" id="quantite" name="quantite" required>
+              </div>
+              <div class="mb-3">
+                <label for="densite" class="form-label">Densite : </label>
+                <input [(ngModel)]="depotage.densite" type="text" class="form-control" id="densite" name="densite" required>
+            </div>
+            </div>
+            <div class="col">
+              <div class="mb-3">
+                <label for="temperatue" class="form-label">temperatue : </label>
+                <input [(ngModel)]="depotage.temperatue" type="number" class="form-control" id="temperatue" name="temperatue" required>
+                </div>
+                <div class="form-group">
+                  <label for="produit">Type de carburant:</label>
+                  <select class="form-control" id="produit" name="produit" [(ngModel)]="depotage.produit" required>
+                    <option *ngFor="let produit of produits" [ngValue]="produit">{{ produit.nomProduit }}</option>
+                  </select>
+                </div>
+            </div>
+          </div><br><br>
+          <h2>Autres Informations</h2>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="cuve">Cuve de stockage:</label>
+                <select class="form-control" id="cuve" name="cuve" [(ngModel)]="depotage.cuve" required>
+                  <option *ngFor="let cuve of cuves" [ngValue]="cuve">{{ cuve.nomCuve }}</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="quantiteAvant" class="form-label">Quantité Avant : </label>
+                <input [(ngModel)]="depotage.quantiteAvant" type="number" class="form-control" id="quantiteAvant" name="quantiteAvant" required>
+              </div>
+              <div class="mb-3">
+                <label for="ecart" class="form-label">ecart : </label>
+                <input [(ngModel)]="depotage.ecart" type="number" class="form-control" id="ecart" name="ecart" required >
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3">
+                <label for="quantiteTheorique" class="form-label">Quantité Theorique : </label>
+                <input [(ngModel)]="depotage.quantiteTheorique" type="number" class="form-control" id="quantiteTheorique" name="quantiteTheorique" required>
+              </div>
+              <div class="mb-3">
+                <label for="quantiteApres" class="form-label">Quantité Après : </label>
+                <input [(ngModel)]="depotage.quantiteApres" type="number" class="form-control" id="quantiteApres" name="quantiteApres" required>
+              </div>
+              <div class="mb-3">
+                <label for="coullage" class="form-label">Coullage : </label>
+                <input [(ngModel)]="depotage.coullage" type="number" class="form-control" id="coullage" name="coullage" required>
+            </div>
+            </div>
+          </div><br><br>
+          <div class="row">
+            <div class="col-6">
+              <button type="submit" class="btn btn-primary"> Modifier </button>
+            </div>
+            <div class="col-6">
+              <a [routerLink]="'/details/' + depotage.id" class="btn btn-info"> Annuler </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

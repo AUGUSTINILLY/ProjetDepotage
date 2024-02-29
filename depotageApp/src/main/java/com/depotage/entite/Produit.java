@@ -1,27 +1,34 @@
 package com.depotage.entite;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.Collection;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Data
 @Table(name = "produit")
+/*
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE", length = 4 )
-public abstract class Produit {
+*/
+public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idProduit;
-    private String descriptionProduit;
+    private String nomProduit;
+    /*
     @ManyToOne
     private Categorie typeProduit;
 
+
+    @OneToMany(mappedBy = "produit")
+    private Collection<Livraison> produitLivre;
+    */
     public long getIdProduit() {
         return idProduit;
     }
@@ -30,11 +37,12 @@ public abstract class Produit {
         this.idProduit = idProduit;
     }
 
-    public String getDescriptionProduit() {
-        return descriptionProduit;
+    public String getNomProduit() {
+        return nomProduit;
     }
 
-    public void setDescriptionProduit(String descriptionProduit) {
-        this.descriptionProduit = descriptionProduit;
+    public void setNomProduit(String comProduit) {
+        this.nomProduit = comProduit;
     }
-}
+
+   }

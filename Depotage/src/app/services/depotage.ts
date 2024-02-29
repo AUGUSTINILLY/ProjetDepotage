@@ -10,7 +10,7 @@ export class DepotageService {
   private baseUrl = 'http://localhost:8080/api/depotage';
 
   constructor(private http: HttpClient) { }
-
+/*
   getDepotage(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
@@ -30,5 +30,25 @@ export class DepotageService {
 
   getDepotageList(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
+  }
+*/
+   getDepotageList(): Observable<Depotage[]> {
+    return this.http.get<Depotage[]>(this.baseUrl);
+  }
+
+  getDepotage(id: number): Observable<Depotage> {
+    return this.http.get<Depotage>(`${this.baseUrl}/${id}`);
+  }
+
+  createDepotage(depotage: Depotage): Observable<Depotage> {
+    return this.http.post<Depotage>(this.baseUrl, depotage);
+  }
+
+  updateDepotage(id: number, depotage: Depotage): Observable<Depotage> {
+    return this.http.put<Depotage>(`${this.baseUrl}/${id}`, depotage);
+  }
+
+  deleteDepotage(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 }

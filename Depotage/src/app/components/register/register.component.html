@@ -1,4 +1,13 @@
-<div class="container-fluid " id="form">
+<div>
+  <input type="text" [(ngModel)]="user.nom" placeholder="Nom d'utilisateur">
+  <input type="email" [(ngModel)]="user.email" placeholder="Adresse email">
+  <input type="password" [(ngModel)]="user.mdp" placeholder="Mot de passe">
+  <button (click)="register()">S'inscrire</button>
+  <div *ngIf="error" class="error">{{ error }}</div>
+</div>
+
+
+<!--div class="container-fluid " id="form">
   <div class="content">
     <div class="card">
       <div class="progress">
@@ -156,4 +165,4 @@
     </div>
 
   </div>
-</div>
+</div -->

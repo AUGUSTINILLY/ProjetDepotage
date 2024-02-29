@@ -3,6 +3,8 @@ import { Utilisateur } from 'src/app/models/Utilisateur';
 import { UtilisateurService } from './../../services/utilisateur.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthentifcationService } from 'src/app/services/authentifcation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +13,28 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit{
 
+  user = { nom: '', mdp: '', email: '' };
+  error = '';
+  ngOnInit(): void {
+
+  }
+
+  constructor(private authService: AuthentifcationService, private router: Router) { }
+
+  register(): void {
+    this.authService.register(this.user).subscribe(
+      response => {
+        // Rediriger l'utilisateur vers la page de connexion après l'inscription réussie
+        this.router.navigate(['/login']);
+      },
+      error => {
+        this.error = 'Erreur lors de l\'inscription. Veuillez réessayer.';
+      }
+    );
+  }
+
+
+/*
   user: Utilisateur = new Utilisateur; // Modèle utilisateur
   verificationCode: string = ''; // Code de vérification
 
@@ -98,3 +122,4 @@ export class RegisterComponent implements OnInit{
   }
 }
 */
+}

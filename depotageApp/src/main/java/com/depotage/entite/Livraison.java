@@ -18,9 +18,31 @@ public abstract class Livraison {
     private Date date;
 
     private String heure;
-    public double quantite;
+    private double quantite;
     @ManyToOne
-    public Livreur livreur;
+    private Livreur livreur;
+    @ManyToOne
+    private Produit produit;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Livreur getLivreur() {
+        return livreur;
+    }
+
+    public void setLivreur(Livreur livreur) {
+        this.livreur = livreur;
+    }
+
+    public Produit getProduit() {
+        return produit;
+    }
+
+    public void setProduit(Produit produit) {
+        this.produit = produit;
+    }
 
     public long getId() {
         return id;

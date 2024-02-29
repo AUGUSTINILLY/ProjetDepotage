@@ -1,7 +1,37 @@
 <div class="container">
+  <h1 class="titre">
+    <div class="card">
+      <div class="card-body">
+        <div *ngIf="error" class="error">{{ error }}</div>
+        <div class="row">
+
+            <div class="col donnees">
+              <div >
+                <div class="form-goup">
+                  <input type="email" class="form-control" [(ngModel)]="username" placeholder="Nom d'utilisateur">
+                </div><br><br>
+                <div class="form-group">
+                  <input type="password" class="form-control" [(ngModel)]="password" placeholder="Mot de passe">
+                </div><br><br>
+                <button type="submit" (click)="login()" class="btn btn-primary">Connexion</button>
+              </div>
+            </div>
+
+
+          <div class="col" id="img1">
+            <div class="image" >
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </h1>
+</div>
+<!--div class="container">
   <h1 class="titre"> CONNEXION </h1>
   <div class="card">
-    
+
     <div class="card-body">
       <div class="row">
         <div class="col donnees">
@@ -39,10 +69,10 @@
         </div>
         <div class="col" id="img1">
           <div class="image" >
-            
+
           </div>
         </div>
       </div>
 
     </div>
-</div>
+</div-->

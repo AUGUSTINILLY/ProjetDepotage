@@ -1,0 +1,17 @@
+.card{
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+#img1{
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la zone du conteneur */
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+  border: 1px solid;
+  background-image: url('../../../assets/images/logo.jpeg');
+
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { Utilisateur } from 'src/app/models/Utilisateur';
+import { AuthentifcationService } from 'src/app/services/authentifcation.service';
 import { UserService } from 'src/app/services/user.service';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
 
@@ -10,7 +11,29 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent  {
-  user: Utilisateur = new Utilisateur; // Modèle utilisateur
+
+
+  username = '';
+  password = '';
+  error = '';
+
+  constructor(private authService: AuthentifcationService, private router: Router) { }
+
+  login(): void {
+    this.authService.login(this.username, this.password).subscribe(
+      response => {
+        // Stocker les informations d'authentification dans le stockage local
+        localStorage.setItem('currentUser', JSON.stringify(response));
+        this.router.navigate(['/dashboard']);
+      },
+      error => {
+        this.error = 'Erreur de connexion. Veuillez vérifier vos informations.';
+      }
+    );
+  }
+
+
+ /* user: Utilisateur = new Utilisateur; // Modèle utilisateur
   credentials = {
     username: this.user.email,
     password: this.user.mdp
@@ -33,6 +56,7 @@ export class LoginComponent  {
   login(){
     this.router.navigate(['/dahsbord']);
   }
+  */
 
 }
 

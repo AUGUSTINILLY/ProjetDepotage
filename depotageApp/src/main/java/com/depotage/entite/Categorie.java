@@ -19,11 +19,10 @@ public class Categorie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idCategorie;
     private String nomCategorie;
+    /*
     @OneToMany(mappedBy = "typeProduit", fetch = FetchType.LAZY)
     private Collection<Produit> typeProduit;
-
-
-
+*/
     public void setIdCategorie(long idCategorie) {
         this.idCategorie = idCategorie;
     }

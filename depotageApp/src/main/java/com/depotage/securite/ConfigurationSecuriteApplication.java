@@ -46,6 +46,8 @@ public class ConfigurationSecuriteApplication {
                                                 .requestMatchers(DELETE,"/livraison/{id}").permitAll()
                                                 .requestMatchers(PUT,"/livraison/{id}").permitAll()
                                                 .requestMatchers(POST,"/depot").permitAll()
+                                                .requestMatchers(POST,"/personne").permitAll()
+                                                .requestMatchers(GET,"/produit").permitAll()
                                                 .requestMatchers(GET,"/depot/{id}").permitAll()
                                                 .requestMatchers(GET,"/depot").permitAll()
                                                 .requestMatchers(DELETE,"/depot/{id}").permitAll()

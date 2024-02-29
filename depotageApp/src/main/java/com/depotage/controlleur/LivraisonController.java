@@ -1,9 +1,7 @@
 package com.depotage.controlleur;
 
-import com.depotage.entite.Carburant;
 import com.depotage.entite.Livraison;
 import com.depotage.exception.ResourceNoFoundException;
-import com.depotage.repository.CarburantRepository;
 import com.depotage.repository.LivraisonRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

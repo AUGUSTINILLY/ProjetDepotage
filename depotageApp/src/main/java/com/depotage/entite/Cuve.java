@@ -1,14 +1,12 @@
 package com.depotage.entite;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Collection;
 
 @Getter
+@Data
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,8 +18,12 @@ public class Cuve {
     private long idCuve;
     private int Capacite;
     private String nomCuve;
-    @OneToMany(mappedBy = "cuve", fetch = FetchType.LAZY)
+    /*
+    @OneToMany(mappedBy = "cuve")
     private Collection<Depotage> depotage;
+
+     */
+
     public long getIdCuve() {
         return idCuve;
     }

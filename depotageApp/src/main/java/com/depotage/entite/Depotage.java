@@ -1,11 +1,26 @@
 package com.depotage.entite;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
-//@Table(name = "Depotage")
-@DiscriminatorValue("DEPO")
-public class Depotage  extends Livraison{
+@Data
+@Table(name = "Depotage")
+//@DiscriminatorValue("DEPO")
+public class Depotage {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private LocalDate date;
+    private String heure;
+    private double quantite;
+    @ManyToOne
+    private Livreur livreur;
+    @ManyToOne
+    private Produit produit;
     private double densite;
     private double temperatue;
     private  double coullage;
@@ -14,31 +29,11 @@ public class Depotage  extends Livraison{
     private double quantiteApres;
     private boolean contientEau;
     private double ecart;
-    @ManyToOne
-    @JoinColumn(name = "Livreur_id")
-    public Livreur livreur;
-    @ManyToOne
-    @JoinColumn(name = "carburant_id")
-    private Carburant carburant;
+
     @ManyToOne
     @JoinColumn(name = "Cuve_id")
     private Cuve cuve;
 
-    public Livreur getPersonne() {
-        return livreur;
-    }
-
-    public void setPersonne(Livreur livreur) {
-        this.livreur = livreur;
-    }
-
-    public Livreur getLivreur() {
-        return livreur;
-    }
-
-    public void setLivreur(Livreur livreur) {
-        this.livreur = livreur;
-    }
 
     public double getDensite() {
         return densite;
@@ -104,13 +99,6 @@ public class Depotage  extends Livraison{
         this.ecart = ecart;
     }
 
-    public Carburant getCarburant() {
-        return carburant;
-    }
-
-    public void setCarburant(Carburant carburant) {
-        this.carburant = carburant;
-    }
 
     public Cuve getCuve() {
         return cuve;
@@ -119,4 +107,53 @@ public class Depotage  extends Livraison{
     public void setCuve(Cuve cuve) {
         this.cuve = cuve;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public String getHeure() {
+        return heure;
+    }
+
+    public void setHeure(String heure) {
+        this.heure = heure;
+    }
+
+    public double getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(double quantite) {
+        this.quantite = quantite;
+    }
+
+    public Livreur getLivreur() {
+        return livreur;
+    }
+
+    public void setLivreur(Livreur livreur) {
+        this.livreur = livreur;
+    }
+
+    public Produit getProduit() {
+        return produit;
+    }
+
+    public void setProduit(Produit produit) {
+        this.produit = produit;
+    }
+
 }
