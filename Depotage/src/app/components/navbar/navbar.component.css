@@ -22,3 +22,12 @@ nav{
 .btn{
   margin-left: 10px;
 }
+.user{
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la zone du conteneur */
+  height: 30px;
+  width: 30px;
+  border-radius: 100px;
+  background-image: url('../../../assets/images/l.jpg');
+
+}

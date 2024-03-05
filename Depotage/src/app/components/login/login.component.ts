@@ -24,6 +24,7 @@ export class LoginComponent  {
       response => {
         // Stocker les informations d'authentification dans le stockage local
         localStorage.setItem('currentUser', JSON.stringify(response));
+        console.log(response);
         this.router.navigate(['/dashboard']);
       },
       error => {

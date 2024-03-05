@@ -26,8 +26,9 @@ public class Utilisateur implements UserDetails {
     private String nom;
 
     private String email;
+    private String nomUser;
 
-    private boolean actif = false;
+    private boolean actif = true;
 
     public int getId() {
         return id;
@@ -112,5 +113,13 @@ public class Utilisateur implements UserDetails {
     @Override
     public boolean isEnabled() {
         return this.actif;
+    }
+
+    public String getNomUser() {
+        return nomUser;
+    }
+
+    public void setNomUser(String nomUser) {
+        this.nomUser = nomUser;
     }
 }

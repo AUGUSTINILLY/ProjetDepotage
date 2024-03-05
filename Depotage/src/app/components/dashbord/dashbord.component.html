@@ -9,13 +9,72 @@
 
     </div>
     <div class="row">
-      <div class="col"></div>
-      <div class="col" ><p id="img2"></p></div>
-      <div class="col"></div>
-      <div class="col" ><p id="img4"></p></div>
+      <div class="col">
+        <div class="cuve" id="cuve1" *ngIf="cuve1">
+          <b>
+            {{cuve1.idCuve}}
+          </b>
+          <b>
+            {{cuve1.nomCuve}} 
+          </b>
+          <br><br>
+          <b>
+            Capcité: {{cuve1.capacite}}
+          </b>
+          
+        </div>
+      </div>
+      <div class="col cuve" >
+        <div class="cuve" id="cuve2" *ngIf="cuve2">
+          
+          <b>
+            {{cuve2.idCuve}}
+          </b>
+          <b>
+            {{cuve2.nomCuve}} 
+          </b>
+          <br><br>
+          <b>
+            Capcité: {{cuve2.capacite}}
+          </b>
+        </div>
+        
+      </div>
+      <div class="col cuve" >
+        <div class="cuve" id="cuve3" *ngIf="cuve3">
+          <b>
+            {{cuve3.idCuve}}
+          </b>
+          <b>
+            {{cuve3.nomCuve}} 
+          </b>
+          <br><br>
+          <b>
+            Capcité: {{cuve3.capacite}}
+          </b>
+        </div>
+        
+      </div>
 
 
     </div>
-    
+
   </div>
 </div>
+<!--div>
+<div class="row" *ngFor="let cuve of cuves">
+        <div class="col">
+          <div class="cuve" id="cuve1">
+            <b>
+              {{cuve.nomCuve}} 
+            </b>
+            <b>
+              {{cuve.idCuve}}
+            </b><br><br>
+            <b>
+              {{cuve.capacite}}
+            </b>
+          </div>
+          
+      </div>
+</div-->

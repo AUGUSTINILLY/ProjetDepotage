@@ -1,8 +1,10 @@
 package com.depotage.controlleur;
 
+import com.depotage.entite.Cuve;
 import com.depotage.entite.Depot;
 import com.depotage.entite.Depotage;
 import com.depotage.exception.ResourceNoFoundException;
+import com.depotage.repository.CuveRepository;
 import com.depotage.repository.DepotRepository;
 import com.depotage.repository.DepotageRepository;
 import lombok.AllArgsConstructor;
@@ -22,6 +24,7 @@ public class DepotageController {
 
     @Autowired
     private DepotageRepository depotageRepository;
+    private CuveRepository cuveRepository;
 
     @GetMapping("/depotage")
     public List<Depotage> getAlldepots() {
@@ -39,6 +42,17 @@ public class DepotageController {
     @PostMapping("/depotage")
     public Depotage createdepot( @RequestBody Depotage depotage) {
         return depotageRepository.save(depotage);
+    }
+
+    @PutMapping("/updateQuantiteCarburant/{cuveId}")
+    public ResponseEntity<?> updateQuantiteCarburant(@PathVariable Long cuveId, @RequestBody int quantiteLivre) {
+        Cuve cuve = cuveRepository.findById(Math.toIntExact(cuveId)).orElse(null);
+        if (cuve == null) {
+            return ResponseEntity.notFound().build();
+        }
+        cuve.setQuanteducuve(cuve.getQuanteducuve() + quantiteLivre);
+        cuveRepository.save(cuve);
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping("/depotage/{id}")

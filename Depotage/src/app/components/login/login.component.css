@@ -7,18 +7,37 @@
 .donnees{
   width: 900px;
   padding-top: 10px;
+}*/
+.card{
+  min-height: 400px;
+  margin-top: 50px;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
 }
+
 h1{
   width: 40%;
   margin-left: 30%;
   margin-right: 30%;
   text-align: center;
-  margin-top: 50px;
-}*/
+  margin-top: 10px;
+}.btn{
+  width: 60%;
+  margin-left: 15%;
+}
+#url{
+  margin-top: 15px;
+  margin-left: 15%;
+  padding-left: 30px;
+}
 #img1{
   background-image: url('../../../assets/images/b.jpg');
   background-repeat: no-repeat; /* Empêche la répétition de l'image */
   background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la zone du conteneur */
-  height: auto;
+  height: 320px;
+}
+.error{
+  color: red;
 }
 

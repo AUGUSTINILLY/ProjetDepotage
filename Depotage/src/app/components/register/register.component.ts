@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit{
 
-  user = { nom: '', mdp: '', email: '' };
+  user = { nom: '', mdp: '', email: '', nomUser: '' };
   error = '';
   ngOnInit(): void {
 

@@ -1,7 +1,7 @@
 /*.container{
   background-image: url('../../../assets/images/citerne.jpg');
-  background-repeat: no-repeat; 
-  background-size: cover; 
+  background-repeat: no-repeat;
+  background-size: cover;
 
   height: 100vh;
 }*/
@@ -14,18 +14,32 @@
 }
 #img1{
   background-image: url('../../../assets/images/citerne.jpg');
-  
+
 }
 #img2{
   background-image: url('../../../assets/images/63f600dc356aa.png');
-  
+
 }
 #img3{
   background-image: url('../../../assets/images/pompe_sodigaz.png');
-  
+
 }
 #img4{
   background-image: url('../../../assets/images/photo.jpg');
-  
-}
 
+}
+.cuve{
+  width: 200px;
+  height: 100px;
+  border-radius: 20px;
+  padding: 10px;
+  color: white;
+  text-size-adjust: 20px;
+}
+#cuve1{
+  background-color: rgb(255, 60, 0);
+}
+#cuve2{background-color:rgb(0, 119, 255) ;}
+#cuve3{background-color:crimson ;}
+
+b{margin-left: 10px;}

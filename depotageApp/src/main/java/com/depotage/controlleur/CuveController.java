@@ -47,12 +47,25 @@ public class CuveController {
         Cuve Cuve = cuveRepository.findById(Math.toIntExact(id))
                 .orElseThrow(() -> new ResourceNoFoundException.ResourceNotFoundException("Cuve not found for this id :: " + id));
 
-        //Cuve.setNomCuve(CuveDetails.getNomCuve());
+        Cuve.setIdCuve(CuveDetails.getIdCuve());
+        Cuve.setQuanteducuve(CuveDetails.getQuanteducuve());
+        Cuve.setNomCuve(CuveDetails.getNomCuve());
+        Cuve.setCapacite(CuveDetails.getCapacite());
 
         final Cuve updateCuve = cuveRepository.save(Cuve);
         return ResponseEntity.ok(updateCuve);
     }
 
+    @PutMapping("/updateQuantite/{cuveId}")
+    public ResponseEntity<?> updateQuantiteCarburant(@PathVariable Long cuveId, @RequestBody int quantiteLivre) {
+        Cuve cuve = cuveRepository.findById(Math.toIntExact(cuveId)).orElse(null);
+        if (cuve == null) {
+            return ResponseEntity.notFound().build();
+        }
+        cuve.setQuanteducuve(cuve.getQuanteducuve() + quantiteLivre);
+        cuveRepository.save(cuve);
+        return ResponseEntity.ok().build();
+    }
     @DeleteMapping("/cuve/{id}")
     public Map<String, Boolean> deleteCuve(@PathVariable(value = "id") Long id)
             throws ResourceNoFoundException.ResourceNotFoundException {

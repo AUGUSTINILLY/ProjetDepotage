@@ -29,11 +29,11 @@ public class UtilisateurControlleur {
     public void inscription(@RequestBody Utilisateur utilisateur) {
         this.utilisateurService.inscription(utilisateur);
     }
-
+/*
     @PostMapping(path = "activation")
     public void activation(@RequestBody Map<String, String> activation) {
         this.utilisateurService.activation(activation);
-    }
+    }*/
 
     @PostMapping(path = "connexion")
     public Map<String, String> connexion(@RequestBody AuthentificationDTO authentificationDTO) {

@@ -18,6 +18,7 @@ public class Cuve {
     private long idCuve;
     private int Capacite;
     private String nomCuve;
+    private int quanteducuve;
     /*
     @OneToMany(mappedBy = "cuve")
     private Collection<Depotage> depotage;
@@ -30,6 +31,14 @@ public class Cuve {
 
     public void setIdCuve(long idCuve) {
         this.idCuve = idCuve;
+    }
+
+    public int getQuanteducuve() {
+        return quanteducuve;
+    }
+
+    public void setQuanteducuve(int quanteducuve) {
+        this.quanteducuve = quanteducuve;
     }
 
     public int getCapacite() {

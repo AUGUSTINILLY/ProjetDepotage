@@ -30,7 +30,7 @@ public class UtilisateurService implements UserDetailsService {
             throw new RuntimeException("Votre mail invalide");
         }
 
-        Optional<Utilisateur> utilisateurOptional = this.utilisateurRepository.findByEmail(utilisateur.getEmail());
+        Optional<Utilisateur> utilisateurOptional = this.utilisateurRepository.findByNom(utilisateur.getNom());
         if (utilisateurOptional.isPresent()) {
             throw new RuntimeException("Votre mail est déjà utilisé");
         }
@@ -43,9 +43,9 @@ public class UtilisateurService implements UserDetailsService {
         this.utilisateurRepository.save(utilisateur);
 
         utilisateur = this.utilisateurRepository.save(utilisateur);
-        this.validationService.enregistrer(utilisateur);
+        //this.validationService.enregistrer(utilisateur);
     }
-
+/*
     public void activation(Map<String, String> activation) {
 
         Validation validation = this.validationService.lireEnFonctionDuCode(activation.get("code"));
@@ -56,13 +56,14 @@ public class UtilisateurService implements UserDetailsService {
         utilisateurActiver.setActif(true);
         this.utilisateurRepository.save(utilisateurActiver);
 
-    }
+    }*/
 
     @Override
     public Utilisateur loadUserByUsername(String username) throws UsernameNotFoundException {
 
         return this.utilisateurRepository
-                .findByEmail(username)
+                //.findByEmail(username)
+                .findByNom(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Aucun utilisateur ne corespond à cet identifiant"));
 
     }

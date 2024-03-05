@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 import { Carburant } from './../../models/carburant';
 import { CategorieService } from './../../services/categorie';
 import { Router } from '@angular/router';
@@ -31,6 +32,9 @@ export class DepotageComponent implements OnInit{
   cuves: Cuve[] = [];
   produits: Produit[] = [];
   produit: Produit = new Produit();
+  cuvedepote: Cuve = new Cuve();
+  cuveId: number = 0;
+  livre: number= 0;
 
   /*produit: Produit = new Produit();
   cuve: Cuve= new Cuve();
@@ -54,6 +58,7 @@ export class DepotageComponent implements OnInit{
 
 
   constructor( private router: Router,
+    private route: ActivatedRoute,
     private cuveService: CuveService,
     private personneService: PersonneService,
     private produitService: ProduitService,
@@ -68,6 +73,9 @@ export class DepotageComponent implements OnInit{
     this.getAllCuves();
     //this.getAllLivreurs();
     this.getAllProduits();
+    this.route.params.subscribe(params => {
+      this.cuveId = +params['cuveId']; // Supposant que vous avez un paramètre 'cuveId' dans votre route
+    });
 
   }
 
@@ -96,9 +104,15 @@ export class DepotageComponent implements OnInit{
   onSubmit(): void {
     this.personneService.createLivreur(this.nouveauLivreur).subscribe(newLivreur => {
       this.depotage.livreur = newLivreur;
+      this.depotage.quantiteTheorique = this.depotage.quantite + this.depotage.quantiteAvant;
+      this.depotage.ecart = this.depotage.quantiteTheorique - this.depotage.quantiteApres;
+      //this.depotage.cuve.quantiteducuve = this.depotage.cuve.quantiteducuve + this.depotage.quantite;
       this.depotageService.createDepotage(this.depotage).subscribe(() => {
-        console.log('Depotage créé avec succès');
-        this.depotage = new Depotage();
+        this.cuveService.updateQuantiteCarburant(this.cuveId, this.depotage.quantite).subscribe(() => {
+        console.log('Quantité de carburant mise à jour avec succès dans la cuve.');
+      }, error => {
+        console.error('Erreur lors de la mise à jour de la quantité de carburant dans la cuve:', error);
+      });
         this.router.navigate(['/historique']); // Rediriger vers la liste des dépotages après création
       }, error => {
         console.error('Erreur lors de la création du dépotage:', error);
@@ -108,6 +122,16 @@ export class DepotageComponent implements OnInit{
       console.error('Erreur lors de la création du livreur:', error);
       // Gérer l'erreur comme souhaité, par exemple afficher un message à l'utilisateur
     });
+      
+  }
+
+  updateCuve(){
+    //this.cuveId= this.depotage.cuve.idCuve;
+    this.depotageService.updateQuantiteCarburant(this.cuveId, this.livre).subscribe(() => {
+          console.log('Quantité de carburant mise à jour avec succès dans la cuve.');
+        }, error => {
+          console.error('Erreur lors de la mise à jour de la quantité de carburant dans la cuve:', error);
+        });
   }
 /*
   save(){
@@ -126,6 +150,24 @@ export class DepotageComponent implements OnInit{
 
 
   }
+
+this.depotageService.createDepotage(this.depotage).subscribe((depotage:Depotage) => {
+        console.log('Depotage créé avec succès', depotage.id);
+        console.log('incre', depotage.id + 1);
+        this.cuveId = depotage.cuve.idCuve ;
+        this.livre = depotage.quantite;
+        this.updateCuve();
+        this.depotage = new Depotage();
+        this.router.navigate(['/historique']); // Rediriger vers la liste des dépotages après création
+      }, error => {
+        console.error('Erreur lors de la création du dépotage:', error);
+        // Gérer l'erreur comme souhaité, par exemple afficher un message à l'utilisateur
+      });
+    }, error => {
+      console.error('Erreur lors de la création du livreur:', error);
+      // Gérer l'erreur comme souhaité, par exemple afficher un message à l'utilisateur
+    });
+
   getAll(){
     this.depotages=[];
     this.depotageService.getDepotageList().subscribe(

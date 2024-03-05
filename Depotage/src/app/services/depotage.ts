@@ -8,6 +8,8 @@ import { Depotage } from '../models/depotage';
 })
 export class DepotageService {
   private baseUrl = 'http://localhost:8080/api/depotage';
+  private Url = 'http://localhost:8080/api/updateQuantiteCarburant';
+
 
   constructor(private http: HttpClient) { }
 /*
@@ -46,6 +48,9 @@ export class DepotageService {
 
   updateDepotage(id: number, depotage: Depotage): Observable<Depotage> {
     return this.http.put<Depotage>(`${this.baseUrl}/${id}`, depotage);
+  }
+  updateQuantiteCarburant(cuveId: number, quantiteLivre: number): Observable<any> {
+    return this.http.put(`${this.Url}/${cuveId}`, { quantiteLivre });
   }
 
   deleteDepotage(id: number): Observable<any> {

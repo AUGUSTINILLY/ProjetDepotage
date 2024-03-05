@@ -8,6 +8,8 @@ import { Cuve } from '../models/cuve';
 })
 export class CuveService {
   private baseUrl = 'http://localhost:8080/api/cuve';
+  private Url = 'http://localhost:8080/api/updateQuantite';
+
 
   constructor(private http: HttpClient) { }
 
@@ -18,8 +20,15 @@ export class CuveService {
   createCuve(depot: Object): Observable<Object> {
     return this.http.post(`${this.baseUrl}`, depot);
   }
+  updateCuve(id: number, cuve: Cuve): Observable<Cuve> {
+    return this.http.put<Cuve>(`${this.baseUrl}/${id}`, cuve);
+  }
 
-  updateCuve(id: number, value: any): Observable<Object> {
+  updateQuantiteCarburant(cuveId: number, quantiteLivre: number): Observable<any> {
+    return this.http.put(`${this.Url}/${cuveId}`, { quantiteLivre });
+  }
+
+  pdateCuve(id: number, value: any): Observable<Object> {
     return this.http.put(`${this.baseUrl}/${id}`, value);
   }
 
