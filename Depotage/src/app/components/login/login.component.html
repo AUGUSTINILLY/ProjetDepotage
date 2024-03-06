@@ -10,13 +10,19 @@
                 <div class="form-goup">
                   <label for="" class="form-label">username </label>
                   <div class="input-group">
-                    <input class="form-control" type="text" class="form-control" [(ngModel)]="username" placeholder="Nom d'utilisateur">
+                    <input class="form-control" type="text" class="form-control" [(ngModel)]="utilisateur.nom" placeholder="Nom d'utilisateur">
+                    <span class="input-group-text material-icons">
+                      personne
+                    </span>
                   </div>
                 </div><br><br>
                 <div class="form-group">
                   <label for="" class="form-label">Mot de passe </label>
                   <div class="input-group">
-                    <input class="form-control" type="password" class="form-control" [(ngModel)]="password" placeholder="Mot de passe">
+                    <input class="form-control" type="password" class="form-control" [(ngModel)]="utilisateur.mdp" placeholder="Mot de passe">
+                    <span class="input-group-text material-icons">
+                      lock_open
+                    </span>
                   </div>
                 </div><br><br>
                     <button type="submit" (click)="login()" class="btn  btn-primary">Connexion</button><br><br>

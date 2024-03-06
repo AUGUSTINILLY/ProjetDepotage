@@ -19,8 +19,6 @@ public class Livreur {
     @JoinColumn(name = "CONTACT")
 
     private String contactLivreur;
-    @OneToMany(mappedBy = "livreur", fetch = FetchType.LAZY)
-    private Collection<Livraison> livraison;
 
 
 

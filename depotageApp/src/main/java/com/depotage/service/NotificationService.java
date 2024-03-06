@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 @Service
 public class NotificationService {
-    JavaMailSender javaMailSender;
+   /* JavaMailSender javaMailSender;
     public void envoyer(Validation validation) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("augustinilly81@gmail.com");
@@ -24,6 +24,6 @@ public class NotificationService {
         message.setText(texte);
 
         javaMailSender.send(message);
-    }
+    }*/
 
 }

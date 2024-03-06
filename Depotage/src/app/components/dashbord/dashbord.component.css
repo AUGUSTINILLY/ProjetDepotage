@@ -1,16 +1,13 @@
-/*.container{
-  background-image: url('../../../assets/images/citerne.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  height: 100vh;
-}*/
+.container{
+  margin-top: 50px;
+}
 #img1, #img2,#img3,#img4{
   background-repeat: no-repeat; /* Empêche la répétition de l'image */
   background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la zone du conteneur */
   height: 200px;
   width: 200px;
   border-radius: 100px;
+  border: 2px solid blue;
 }
 #img1{
   background-image: url('../../../assets/images/citerne.jpg');
@@ -28,6 +25,13 @@
   background-image: url('../../../assets/images/photo.jpg');
 
 }
+.cuves{
+  margin-top: 20px;
+  margin-left: 20px;
+  display: flex;
+  align-items:flex-end;
+  justify-content: center;
+}
 .cuve{
   width: 200px;
   height: 100px;
@@ -35,11 +39,35 @@
   padding: 10px;
   color: white;
   text-size-adjust: 20px;
+  
 }
 #cuve1{
   background-color: rgb(255, 60, 0);
+  
 }
 #cuve2{background-color:rgb(0, 119, 255) ;}
 #cuve3{background-color:crimson ;}
 
 b{margin-left: 10px;}
+.url{
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.url a{
+  width: max-content;
+}
+.nom, .welcome{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nom{
+  font-size: 40px;
+  color: rgb(255, 60, 0);;
+}
+.welcome{
+  font-size: 30px;
+  color: navy;
+}

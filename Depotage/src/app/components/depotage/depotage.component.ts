@@ -35,6 +35,7 @@ export class DepotageComponent implements OnInit{
   cuvedepote: Cuve = new Cuve();
   cuveId: number = 0;
   livre: number= 0;
+  id: number = 0;
 
   /*produit: Produit = new Produit();
   cuve: Cuve= new Cuve();
@@ -102,18 +103,14 @@ export class DepotageComponent implements OnInit{
   }
 
   onSubmit(): void {
-    this.personneService.createLivreur(this.nouveauLivreur).subscribe(newLivreur => {
-      this.depotage.livreur = newLivreur;
+    /*this.personneService.createLivreur(this.nouveauLivreur).subscribe(newLivreur => {
+      //this.depotage.livreur = newLivreur;
       this.depotage.quantiteTheorique = this.depotage.quantite + this.depotage.quantiteAvant;
       this.depotage.ecart = this.depotage.quantiteTheorique - this.depotage.quantiteApres;
-      //this.depotage.cuve.quantiteducuve = this.depotage.cuve.quantiteducuve + this.depotage.quantite;
-      this.depotageService.createDepotage(this.depotage).subscribe(() => {
-        this.cuveService.updateQuantiteCarburant(this.cuveId, this.depotage.quantite).subscribe(() => {
-        console.log('Quantité de carburant mise à jour avec succès dans la cuve.');
-      }, error => {
-        console.error('Erreur lors de la mise à jour de la quantité de carburant dans la cuve:', error);
-      });
-        this.router.navigate(['/historique']); // Rediriger vers la liste des dépotages après création
+      this.cuvedepote.quanteducuve = this.depotage.quantite;
+      this.depotageService.createDepotage(this.depotage).subscribe((depotage: Depotage) => {
+        this.id = depotage.id;
+        this.router.navigate(['/details/' + this.id]); // Rediriger vers la liste des dépotages après création
       }, error => {
         console.error('Erreur lors de la création du dépotage:', error);
         // Gérer l'erreur comme souhaité, par exemple afficher un message à l'utilisateur
@@ -122,17 +119,10 @@ export class DepotageComponent implements OnInit{
       console.error('Erreur lors de la création du livreur:', error);
       // Gérer l'erreur comme souhaité, par exemple afficher un message à l'utilisateur
     });
-      
+      */
   }
 
-  updateCuve(){
-    //this.cuveId= this.depotage.cuve.idCuve;
-    this.depotageService.updateQuantiteCarburant(this.cuveId, this.livre).subscribe(() => {
-          console.log('Quantité de carburant mise à jour avec succès dans la cuve.');
-        }, error => {
-          console.error('Erreur lors de la mise à jour de la quantité de carburant dans la cuve:', error);
-        });
-  }
+  
 /*
   save(){
 

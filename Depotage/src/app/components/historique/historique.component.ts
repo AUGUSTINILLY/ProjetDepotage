@@ -1,3 +1,5 @@
+import { LivaisonService } from 'src/app/services/livaison.service';
+import { Livraison } from 'src/app/models/livraison';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Depotage } from 'src/app/models/depotage';
@@ -13,11 +15,15 @@ export class HistoriqueComponent implements OnInit{
   numeroFiltre?: string;
   depotages: Depotage[]= [];
   depotagefilter: Depotage[]= [];
+  Livraison: Livraison = new Livraison();
+  livraisons : Livraison[]= [];
   date: String = "";
+  message: string = "";
 
   constructor(
     private router: Router,
-    private depotageService: DepotageService
+    private depotageService: DepotageService,
+    private livaisonService: LivaisonService,
   ){}
 
   ngOnInit(): void {
@@ -27,16 +33,38 @@ export class HistoriqueComponent implements OnInit{
 
 
   liste() {
-    this.depotages = [];
-    this.depotageService.getDepotageList().subscribe(
+    this.livraisons = [];
+    this.livaisonService.getDepotageList().subscribe(
       result => {
-        this.depotages = result;
-        console.log(this.depotages);
+        this.livraisons = result;
+        if(this.livraisons.length <= 0) {
+          this.message ="Aucune Livraison Enregistrée dans la base de données."
+        }else {
+          this.livraisons = result;
+        }
+        console.log(this.livraisons);
       }
     );
   }
 
-  /* recherche(date:string):void {
+  /* 
+  
+  liste() {
+    this.depotages = [];
+    this.depotageService.getDepotageList().subscribe(
+      result => {
+        this.depotages = result;
+        if(this.depotages.length <= 0) {
+          this.message ="Aucune Livraison Enregistrée dans la base de données."
+        }else {
+          this.depotages = result;
+        }
+        console.log(this.depotages);
+      }
+    );
+  }
+  
+  recherche(date:string):void {
     this.depotages = [];
     this.depotagefilter = [];
     this.depotageService.getDepotageList().subscribe(

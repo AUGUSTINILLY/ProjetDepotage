@@ -24,13 +24,7 @@ export class CuveService {
     return this.http.put<Cuve>(`${this.baseUrl}/${id}`, cuve);
   }
 
-  updateQuantiteCarburant(cuveId: number, quantiteLivre: number): Observable<any> {
-    return this.http.put(`${this.Url}/${cuveId}`, { quantiteLivre });
-  }
 
-  pdateCuve(id: number, value: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/${id}`, value);
-  }
 
   deleteCuve(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });

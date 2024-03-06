@@ -14,7 +14,7 @@ import static java.time.temporal.ChronoUnit.MINUTES;
 @AllArgsConstructor
 @Service
 public class ValidationService {
-    private ValidationRepository validationRepository;
+    /*private ValidationRepository validationRepository;
     private NotificationService notificationService;
 
     public void enregistrer(Utilisateur utilisateur) {
@@ -39,4 +39,5 @@ public class ValidationService {
     public Validation lireEnFonctionDuCode(String code) {
         return this.validationRepository.findByCode(code).orElseThrow(() -> new RuntimeException("Votre code est invalide"));
     }
+    */
 }

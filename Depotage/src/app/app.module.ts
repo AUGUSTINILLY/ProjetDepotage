@@ -26,6 +26,7 @@ import { PersonneService } from './services/personne';
 import { ProduitService } from './services/produitService';
 import { RapportComponent } from './components/rapport/rapport.component';
 import { UpdateComponent } from './components/update/update.component';
+import { LivraisonComponent } from './components/livraison/livraison.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { UpdateComponent } from './components/update/update.component';
     DepotageComponent,
     RapportComponent,
     UpdateComponent,
+    LivraisonComponent,
   ],
   imports: [
     BrowserModule,

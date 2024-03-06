@@ -56,7 +56,7 @@ public class ConfigurationSecuriteApplication {
                                                 .requestMatchers(GET,"/cuve/{id}").permitAll()
                                                 .requestMatchers(PUT,"/cuve/{id}").permitAll()
                                                 .requestMatchers(PUT,"/updateQuantiteCarburant/{cuveId}").permitAll()
-                                                .requestMatchers(PUT,"/updateQuantite/{cuveId}").permitAll()
+                                                .requestMatchers(PUT,"/cuveQuantite/{id}").permitAll()
                                                 .requestMatchers(GET,"/category").permitAll()
                                                 .requestMatchers(GET,"/carburant").permitAll()
                                                 .requestMatchers(GET,"/personne").permitAll()

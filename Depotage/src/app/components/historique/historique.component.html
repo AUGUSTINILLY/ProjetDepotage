@@ -17,31 +17,42 @@
 
       <h2>Historique des livraisons</h2>
 
-
-      <div class="row" *ngFor="let depotage of depotages">
+      <div class="message">
+        {{message}}
+      </div>
+      <div class="row" *ngFor="let depotage of livraisons">
+        
         <div *ngIf="depotage.date == numeroFiltre || numeroFiltre == null">
+          <a [routerLink]="'/details/' + depotage.id">
             <div class="card my-sm-3">
               <div class="card-body" >
                 <div class="row">
+                  <div class="col-10">
+                    <p id="date"><b>{{depotage.date}}</b> </p>
+                  </div>
+                  <div class="col-2">
+                    <p id="heure"><b>{{depotage.heure}}</b></p>
+                  </div>
+                </div><br><br>
+                <!--div class="row donnees">
                   <div class="col">
-                    <p>ID :{{depotage.id}} </p>
-                    <p> Date: {{depotage.date}}</p>
-                    <p> livreur : <b>{{depotage.livreur.nomLivreur}}</b></p>
+                    <p> Livreur : <b>{{depotage.livreur.nomLivreur}}</b></p>
                     <p>E-mail: <b>{{depotage.livreur.emailLivreur}}</b></p>
                     <p>Contact: <b>{{depotage.livreur.contactLivreur}}</b></p>
 
                   </div>
                   <div class="col">
 
-                    <p>produit: <b>{{depotage.produit.nomProduit}}</b></p>
-                    <p> quantité livré: <b>{{depotage.quantite}}</b> </p>
+                    <p>Produit: <b>{{depotage.produit.nomProduit}}</b></p>
+                    <p>Quantité livré: <b>{{depotage.quantite}}</b> </p>
                     <p>Densité : <b>{{depotage.densite}} </b></p>
 
                   </div>
-
-                </div>
+                </div-->
               </div>
             </div>
+          </a>  
+          
         </div>
 
 

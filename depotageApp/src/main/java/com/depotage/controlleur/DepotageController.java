@@ -1,11 +1,9 @@
 package com.depotage.controlleur;
 
 import com.depotage.entite.Cuve;
-import com.depotage.entite.Depot;
 import com.depotage.entite.Depotage;
 import com.depotage.exception.ResourceNoFoundException;
 import com.depotage.repository.CuveRepository;
-import com.depotage.repository.DepotRepository;
 import com.depotage.repository.DepotageRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,13 +61,8 @@ public class DepotageController {
         depotage.setContientEau(depotDetails.isContientEau());
         depotage.setCoullage(depotDetails.getCoullage());
         depotage.setCuve(depotDetails.getCuve());
-        depotage.setDate(depotDetails.getDate());
         depotage.setDensite(depotDetails.getDensite());
         depotage.setEcart(depotDetails.getEcart());
-        depotage.setHeure(depotDetails.getHeure());
-        depotage.setLivreur(depotDetails.getLivreur());
-        depotage.setProduit(depotDetails.getProduit());
-        depotage.setQuantite(depotDetails.getQuantite());
         depotage.setQuantiteApres(depotDetails.getQuantiteApres());
         depotage.setQuantiteAvant(depotDetails.getQuantiteAvant());
         depotage.setTemperatue(depotDetails.getTemperatue());

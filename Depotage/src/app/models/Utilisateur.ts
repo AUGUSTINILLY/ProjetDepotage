@@ -2,9 +2,12 @@ import { Role } from "./role";
 
 export class Utilisateur{
   id: number | undefined;
-  nomuser: string='';
+  nomUser: string='';
   email: string='';
   mdp: string='';
+  remdp: string = '';
+  nom: string = '';
   role: Role= new Role();
-  actif: boolean=false;
+  actif: boolean=true;
 }
+

@@ -11,38 +11,18 @@ import java.util.Collection;
 @AllArgsConstructor
 @Entity
 @Data
-@Table(name = "produit")
-/*
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE", length = 4 )
-*/
-public class Produit {
+public abstract class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idProduit;
-    private String nomProduit;
-    /*
-    @ManyToOne
-    private Categorie typeProduit;
+    private long id;
 
-
-    @OneToMany(mappedBy = "produit")
-    private Collection<Livraison> produitLivre;
-    */
-    public long getIdProduit() {
-        return idProduit;
+    public long getId() {
+        return id;
     }
 
-    public void setIdProduit(long idProduit) {
-        this.idProduit = idProduit;
+    public void setId(long id) {
+        this.id = id;
     }
-
-    public String getNomProduit() {
-        return nomProduit;
-    }
-
-    public void setNomProduit(String comProduit) {
-        this.nomProduit = comProduit;
-    }
-
-   }
+}

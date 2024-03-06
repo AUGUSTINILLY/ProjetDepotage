@@ -12,7 +12,8 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
 })
 export class LoginComponent  {
 
-
+  utilisateur: Utilisateur = new Utilisateur();
+  reussite: boolean = false;
   username = '';
   password = '';
   error = '';
@@ -20,15 +21,17 @@ export class LoginComponent  {
   constructor(private authService: AuthentifcationService, private router: Router) { }
 
   login(): void {
-    this.authService.login(this.username, this.password).subscribe(
+    this.authService.login(this.utilisateur.nom, this.utilisateur.mdp).subscribe(
       response => {
         // Stocker les informations d'authentification dans le stockage local
         localStorage.setItem('currentUser', JSON.stringify(response));
+        this.reussite = true;
         console.log(response);
         this.router.navigate(['/dashboard']);
       },
       error => {
         this.error = 'Erreur de connexion. Veuillez vérifier vos informations.';
+        this.reussite = false;
       }
     );
   }

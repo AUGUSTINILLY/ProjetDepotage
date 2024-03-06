@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit{
 
+  utilisateur: Utilisateur = new Utilisateur();
+
   user = { nom: '', mdp: '', email: '', nomUser: '' };
   error = '';
   ngOnInit(): void {
@@ -22,15 +24,20 @@ export class RegisterComponent implements OnInit{
   constructor(private authService: AuthentifcationService, private router: Router) { }
 
   register(): void {
-    this.authService.register(this.user).subscribe(
-      response => {
-        // Rediriger l'utilisateur vers la page de connexion après l'inscription réussie
-        this.router.navigate(['/login']);
-      },
-      error => {
-        this.error = 'Erreur lors de l\'inscription. Veuillez réessayer.';
-      }
-    );
+    if(this.utilisateur.mdp === this.utilisateur.remdp){
+      this.authService.register(this.utilisateur).subscribe(
+        response => {
+          // Rediriger l'utilisateur vers la page de connexion après l'inscription réussie
+          this.router.navigate(['/login']);
+        },
+        error => {
+          this.error = 'Erreur lors de l\'inscription. Veuillez réessayer.';
+        }
+      );
+    }else {
+      this.error= 'Mots de passe non identiques';
+    }
+
   }
 
 

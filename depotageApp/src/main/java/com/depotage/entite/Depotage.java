@@ -9,18 +9,8 @@ import java.util.Date;
 @Entity
 @Data
 @Table(name = "Depotage")
-//@DiscriminatorValue("DEPO")
-public class Depotage {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private LocalDate date;
-    private String heure;
-    private double quantite;
-    @ManyToOne
-    private Livreur livreur;
-    @ManyToOne
-    private Produit produit;
+@DiscriminatorValue("DEPO")
+public class Depotage extends Produit{
     private double densite;
     private double temperatue;
     private  double coullage;
@@ -108,52 +98,6 @@ public class Depotage {
         this.cuve = cuve;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public String getHeure() {
-        return heure;
-    }
-
-    public void setHeure(String heure) {
-        this.heure = heure;
-    }
-
-    public double getQuantite() {
-        return quantite;
-    }
-
-    public void setQuantite(double quantite) {
-        this.quantite = quantite;
-    }
-
-    public Livreur getLivreur() {
-        return livreur;
-    }
-
-    public void setLivreur(Livreur livreur) {
-        this.livreur = livreur;
-    }
-
-    public Produit getProduit() {
-        return produit;
-    }
-
-    public void setProduit(Produit produit) {
-        this.produit = produit;
-    }
 
 }

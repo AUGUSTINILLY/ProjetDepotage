@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card">
-    
-      
+
+
         <h1> <b>INSCRIPTION</b>  </h1>
         <div class="row">
           <div class="col">
@@ -10,7 +10,7 @@
               Nom et Prenom
               </label>
               <div class="input-group">
-                <input class="form-control" type="text" [(ngModel)]="user.nomUser" placeholder="Nom et prenom">
+                <input class="form-control" type="text" [(ngModel)]="utilisateur.nomUser" placeholder="Nom et prenom">
                 <span class="input-group-text material-icons">
                   personne
                 </span>
@@ -20,7 +20,7 @@
               Adresse E-mail
               </label>
               <div class="input-group">
-                <input class="form-control" type="email" [(ngModel)]="user.email" placeholder="Adresse email">
+                <input class="form-control" type="email" [(ngModel)]="utilisateur.email" placeholder="Adresse email">
                 <span class="input-group-text material-icons">
                   mail_outline
                 </span>
@@ -31,7 +31,7 @@
               Mot de passe
               </label>
               <div class="input-group">
-                <input class="form-control" type="password" [(ngModel)]="user.mdp" placeholder="Mot de passe">
+                <input class="form-control" type="password" [(ngModel)]="utilisateur.mdp" placeholder="Mot de passe">
                 <span class="input-group-text material-icons">
                   lock_open
                 </span>
@@ -40,37 +40,37 @@
             <button class="btn btn-lg btn-primary" (click)="register()">S'inscrire</button>
           </div>
           <div class="col">
-            
+
             <div class="form-group">
               <label for="" class="form-label">
               Username
               </label>
               <div class="input-group">
-                <input class="form-control" type="text" [(ngModel)]="user.nom" placeholder="Nom d'utilisateur">
+                <input class="form-control" type="text" [(ngModel)]="utilisateur.nom" placeholder="Nom d'utilisateur">
                 <span class="input-group-text material-icons">
                   personne
                 </span>
               </div>
             </div><br><br>
-            
+
             <div class="form-group">
               <label for="" class="form-label">
               Contact
               </label>
               <div class="input-group">
-                <input class="form-control" type="text" placeholder="numero de telephone">
+                <input class="form-control" type="tel" placeholder="numero de telephone">
                 <span class="input-group-text material-icons">
                   phone
                 </span>
               </div>
             </div><br><br>
-            
+
             <div class="form-group">
               <label for="" class="form-label">
               Confirmer mot de passe
               </label>
               <div class="input-group">
-                <input class="form-control" type="text"  placeholder="confirmer votre mot de passe">
+                <input class="form-control" type="password" [(ngModel)]="utilisateur.remdp" placeholder="confirmer votre mot de passe">
                 <span class="input-group-text material-icons">
                   lock_open
                 </span>
@@ -83,9 +83,9 @@
           <div *ngIf="error" class="error">{{ error }}</div>
         </div>
 
-      
+
     </div>
-  
+
 </div>
 
 

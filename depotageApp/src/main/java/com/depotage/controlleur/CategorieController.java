@@ -1,10 +1,8 @@
 package com.depotage.controlleur;
 
 import com.depotage.entite.Categorie;
-import com.depotage.entite.Depot;
 import com.depotage.exception.ResourceNoFoundException;
 import com.depotage.repository.CategorieRepository;
-import com.depotage.repository.DepotRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

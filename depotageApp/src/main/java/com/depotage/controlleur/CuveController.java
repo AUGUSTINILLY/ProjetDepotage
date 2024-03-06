@@ -55,10 +55,21 @@ public class CuveController {
         final Cuve updateCuve = cuveRepository.save(Cuve);
         return ResponseEntity.ok(updateCuve);
     }
+    @PutMapping("/cuveQuantite/{id}")
+    public ResponseEntity<?> updateCuveQuantite(@PathVariable(value = "id") Long id,
+                                           @RequestBody int quantitelivre) throws ResourceNoFoundException.ResourceNotFoundException {
+        Cuve Cuve = cuveRepository.findById(Math.toIntExact(id))
+                .orElseThrow(() -> new ResourceNoFoundException.ResourceNotFoundException("Cuve not found for this id :: " + id));
 
-    @PutMapping("/updateQuantite/{cuveId}")
-    public ResponseEntity<?> updateQuantiteCarburant(@PathVariable Long cuveId, @RequestBody int quantiteLivre) {
-        Cuve cuve = cuveRepository.findById(Math.toIntExact(cuveId)).orElse(null);
+        Cuve.setQuanteducuve(Cuve.getQuanteducuve() + quantitelivre);
+
+        final Cuve updateCuve = cuveRepository.save(Cuve);
+        return ResponseEntity.ok(updateCuve);
+    }
+
+    @PutMapping("/updateQuantite/{id}")
+    public ResponseEntity<?> updateQuantiteCarburant(@PathVariable Long id, @RequestBody int quantiteLivre) {
+        Cuve cuve = cuveRepository.findById(Math.toIntExact(id)).orElse(null);
         if (cuve == null) {
             return ResponseEntity.notFound().build();
         }

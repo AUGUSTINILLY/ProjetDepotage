@@ -1,17 +1,17 @@
-<!--div class="container">
+<div class="container">
   <h1>Enregistrer un dépotage</h1>
   <form (ngSubmit)="onSubmit()" #depotageForm="ngForm">
     <div class="row">
       <div class="col">
         <div class="form-group">
           <label for="date">Date:</label>
-          <input type="date" class="form-control" id="date" name="date" [(ngModel)]="depotage.date" required>
+          <input type="date" class="form-control" id="date" name="date" [(ngModel)]="livraison.date" required>
         </div>
       </div>
       <div class="col">
         <div class="form-group">
           <label for="heure">Heure:</label>
-          <input type="time" class="form-control" id="heure" name="heure" [(ngModel)]="depotage.heure" required>
+          <input type="time" class="form-control" id="heure" name="heure" [(ngModel)]="livraison.heure" required>
         </div>
       </div>
     </div><br><br>
@@ -20,17 +20,17 @@
       <div class="col">
         <div class="form-group">
           <label for="nomLivreur">Nom du Livreur:</label>
-          <input type="text" class="form-control" id="nomLivreur" name="nomLivreur" [(ngModel)]="nouveauLivreur.nomLivreur" required>
+          <input type="text" class="form-control" id="nomLivreur" name="nomLivreur" [(ngModel)]="livreur.nomLivreur" required>
         </div>
         <div class="form-group">
           <label for="emailLivreur">Email du Livreur:</label>
-          <input type="email" class="form-control" id="emailLivreur" name="emailLivreur" [(ngModel)]="nouveauLivreur.emailLivreur" required>
+          <input type="email" class="form-control" id="emailLivreur" name="emailLivreur" [(ngModel)]="livreur.emailLivreur" required>
         </div>
       </div>
       <div class="col">
         <div class="form-group">
           <label for="contactLivreur">Contact du Livreur:</label>
-          <input type="text" class="form-control" id="contactLivreur" name="contactLivreur" [(ngModel)]="nouveauLivreur.contactLivreur" required>
+          <input type="text" class="form-control" id="contactLivreur" name="contactLivreur" [(ngModel)]="livreur.contactLivreur" required>
         </div>
       </div>
     </div><br><br>
@@ -39,7 +39,7 @@
       <div class="col">
         <div class="mb-3">
           <label for="quantite" class="form-label">Quantite : </label>
-          <input [(ngModel)]="depotage.quantite" type="number" class="form-control" id="quantite" name="quantite" required>
+          <input [(ngModel)]="livraison.quantite" type="number" class="form-control" id="quantite" name="quantite" required>
         </div>
         <div class="mb-3">
           <label for="densite" class="form-label">Densite : </label>
@@ -53,8 +53,8 @@
           </div>
           <div class="form-group">
             <label for="produit">Type de carburant:</label>
-            <select class="form-control" id="produit" name="produit" [(ngModel)]="depotage.produit" required>
-              <option *ngFor="let produit of produits" [ngValue]="produit">{{ produit.nomProduit }}</option>
+            <select class="form-control" id="categorie" name="categorie" [(ngModel)]="depotage.categorie" required>
+              <option *ngFor="let categorie of categories" [ngValue]="categorie">{{ categorie.nomCategorie }}</option>
             </select>
           </div>
       </div>
@@ -90,4 +90,4 @@
       <button type="submit" class="btn btn-lg btn-primary" [disabled]="!depotageForm.valid">Enregistrer</button>
     </div>
   </form>
-</div -->
+</div>
