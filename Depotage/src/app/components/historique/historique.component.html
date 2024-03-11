@@ -1,58 +1,82 @@
 <div class="container">
-  <div class="row ligne my-sm-3" >
-    <div class="col mt-sm-2 re">RECHERCHE</div>
-    <div class="col">
-      <!-- mat-form-field>
-        <input matInput [matDatepicker]="datePicker">
-        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
-        <mat-datepicker #datePicker></mat-datepicker>
-      </mat-form-field -->
+  <div class="btn-group me-2" id="bouttons">
+    <div class="bouttonsclick">
+      <button class="btn btn-outline-success " (click)="ListeLivraison()"> livraisons du mois</button>
+    </div>
+    <div class="bouttonsclick">
       <form>
-        <input type="datetime" [(ngModel)]="numeroFiltre" name="nueroFiltre" class="form-control" placeholder="rechercher par la date">
+        <input type="datetime" [(ngModel)]="numeroFiltre" name="nueroFiltre" id="input" class="form-control" placeholder="rechercher par la date">
       </form>
     </div>
-    <div class="col"><button class="btn btn-outline-success"> Rechercher</button></div>
+    <div class="bouttonsclick">
+      <button class="btn btn-outline-success" (click)="ListeLivraisonCuve1()"> Cuve1</button>
+    </div>
+    <div class="bouttonsclick">
+      <button class="btn btn-outline-danger" (click)="ListeLivraisonCuve2()"> Cuve2</button>
+    </div>
+    <div class="bouttonsclick">
+      <button class="btn btn-outline-primary" (click)="ListeLivraisonCuve3()"> Cuve3</button>
+    </div>
+    
+
   </div>
 
 
       <h2>Historique des livraisons</h2>
+      <div *ngIf="isClick">
+        <div class="row">
+          <div class="col">
+            <h3>Nom de la cuve: <b>{{nom}}</b>  </h3>
 
+          </div>
+          <div class="col">
+            <h3>nombre de livfraisons: <b> {{nombre}} </b> </h3>
+
+          </div>
+          <div class="col">
+            <h3>Total Carburant Livré : <b>{{sommeQuantiteCarburant}}</b> </h3>
+
+          </div>
+        </div>
+       
+      </div>
       <div class="message">
         {{message}}
       </div>
-      <div class="row" *ngFor="let depotage of livraisons">
-        
-        <div *ngIf="depotage.date == numeroFiltre || numeroFiltre == null">
-          <a [routerLink]="'/details/' + depotage.id">
+      <div class="row" *ngFor="let livraison of livraisons">
+
+        <div *ngIf="livraison.date == numeroFiltre || numeroFiltre == null">
+          <a [routerLink]="'/details/' + livraison.id">
             <div class="card my-sm-3">
               <div class="card-body" >
                 <div class="row">
                   <div class="col-10">
-                    <p id="date"><b>{{depotage.date}}</b> </p>
+                    <p id="date"><b>{{livraison.date}}</b> </p>
                   </div>
                   <div class="col-2">
-                    <p id="heure"><b>{{depotage.heure}}</b></p>
+                    <p id="heure"><b>{{livraison.heure}}</b></p>
                   </div>
                 </div><br><br>
-                <!--div class="row donnees">
+                <div class="row donnees">
                   <div class="col">
-                    <p> Livreur : <b>{{depotage.livreur.nomLivreur}}</b></p>
-                    <p>E-mail: <b>{{depotage.livreur.emailLivreur}}</b></p>
-                    <p>Contact: <b>{{depotage.livreur.contactLivreur}}</b></p>
+                    <p> Livreur : <b>{{livraison.livreur.nomLivreur}}</b></p>
+                    <p>E-mail: <b>{{livraison.livreur.emailLivreur}}</b></p>
+                    <p>Contact: <b>{{livraison.livreur.contactLivreur}}</b></p>
 
                   </div>
                   <div class="col">
 
-                    <p>Produit: <b>{{depotage.produit.nomProduit}}</b></p>
-                    <p>Quantité livré: <b>{{depotage.quantite}}</b> </p>
-                    <p>Densité : <b>{{depotage.densite}} </b></p>
+                    <p>Produit: <b>{{livraison.depotage.categorie.nomCategorie}}</b></p>
+                    <p>Quantité livré: <b>{{livraison.quantite}}</b> </p>
+                    <p>Densité : <b>{{livraison.depotage.densite}} </b></p>
+                    <p>Cuve : <b>{{livraison.depotage.cuve.nomCuve}} </b></p>
 
                   </div>
-                </div-->
+                </div>
               </div>
             </div>
-          </a>  
-          
+          </a>
+
         </div>
 
 

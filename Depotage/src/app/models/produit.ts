@@ -1,6 +1,6 @@
 
-export class Produit{
-  idProduit: number = 0;
-  nomProduit: string="";
+export abstract class Produit{
+  id: number = 0;
+  
 
 }

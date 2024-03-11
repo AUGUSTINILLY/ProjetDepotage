@@ -7,6 +7,7 @@ export class Utilisateur{
   mdp: string='';
   remdp: string = '';
   nom: string = '';
+  contact: string = '';
   role: Role= new Role();
   actif: boolean=true;
 }

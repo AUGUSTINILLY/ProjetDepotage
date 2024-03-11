@@ -9,6 +9,7 @@ import { RapportComponent } from './components/rapport/rapport.component';
 import { UpdateComponent } from './components/update/update.component';
 import { AuthGuard } from './auth.guard';
 import { LivraisonComponent } from './components/livraison/livraison.component';
+import { ProfilComponent } from './components/profil/profil.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,9 +24,7 @@ const routes: Routes = [
   {path: 'details/:id', component: RapportComponent},
   {path: 'modifier/:id', component: UpdateComponent},
   {path: 'depotage', component: LivraisonComponent, canActivate: [AuthGuard]},
-
-
-
+  {path: 'profil/:id', component: ProfilComponent, canActivate: [AuthGuard]},
 
 ];
 

@@ -24,6 +24,10 @@ public class Categorie {
         this.idCategorie = idCategorie;
     }
 
+    public long getIdCategorie() {
+        return idCategorie;
+    }
+
     public String getNomCategorie() {
         return nomCategorie;
     }

@@ -9,8 +9,12 @@ import java.util.Date;
 @Entity
 @Data
 @Table(name = "Depotage")
-@DiscriminatorValue("DEPO")
-public class Depotage extends Produit{
+//@DiscriminatorValue("DEPO")
+public class Depotage {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private double densite;
     private double temperatue;
     private  double coullage;
@@ -19,11 +23,20 @@ public class Depotage extends Produit{
     private double quantiteApres;
     private boolean contientEau;
     private double ecart;
+    @ManyToOne
+    private Categorie categorie;
 
     @ManyToOne
     @JoinColumn(name = "Cuve_id")
     private Cuve cuve;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public double getDensite() {
         return densite;
@@ -55,6 +68,14 @@ public class Depotage extends Produit{
 
     public void setQuantiteTheorique(double quantiteTheorique) {
         this.quantiteTheorique = quantiteTheorique;
+    }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
     }
 
     public double getQuantiteAvant() {

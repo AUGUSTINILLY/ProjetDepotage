@@ -14,7 +14,7 @@ import { ProduitService } from 'src/app/services/produitService';
   styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
-
+/*
   id: number=0;
   depotage: Depotage= new Depotage();
   nouveauLivreur: Livreur = new Livreur();
@@ -80,5 +80,8 @@ export class UpdateComponent implements OnInit {
       console.log(data);
     });
 
+  }*/
+  ngOnInit(): void {
+      
   }
 }

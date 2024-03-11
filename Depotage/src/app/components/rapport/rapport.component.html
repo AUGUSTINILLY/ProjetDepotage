@@ -1,4 +1,4 @@
-<!--div class="container">
+<div class="container">
   <div class="card">
     <div class="row">
       <div class="col"><p id="img1"></p></div>
@@ -8,53 +8,53 @@
     <div class="contenu">
       <div class="row">
 
-        <p id="date">Dépotage du: <b>{{depotage.date}}</b>  <span>à: <b>{{depotage.heure}}</b></span>  <span>N°: <b>{{depotage.id}}</b></span></p> <br>
+        <p id="date">Dépotage du: <b>{{livraison.date}}</b>  <span>à: <b>{{livraison.heure}}</b></span>  <span>N°: <b>{{livraison.id}}</b></span></p> <br>
 
         <div class="row" id="ligne1">
           <h3> Informations du Fournisseur</h3>
           <div class="col">
-            <p> Nom: <b>{{depotage.livreur.nomLivreur}}</b> </p>
-            <p> Contact: <b>{{depotage.livreur.contactLivreur}}</b> </p>
+            <p> Nom: <b>{{livraison.livreur.nomLivreur}}</b> </p>
+            <p> Contact: <b>{{livraison.livreur.contactLivreur}}</b> </p>
 
           </div>
-          <div class="col">
-            <p> Adresse E-mail:<b>{{depotage.livreur.emailLivreur}}</b>  </p>
+          <div class="col droit">
+            <p>E-mail:<b>{{livraison.livreur.emailLivreur}}</b>  </p>
           </div>
-          
+
         </div>
 
         <div class="row" id="ligne2">
           <h3> Informations sur le Prduit</h3>
 
           <div class="col">
-            <p>carburant de type:<b>{{depotage.produit.nomProduit}}</b>  </p>
-            <p>quanté de carburant livré :<b>{{depotage.quantite}}</b> </p>
-            <p> Contient de l'eau: <b>{{depotage.contientEau}}</b> </p>
+            <p>Carburant de type:<b>{{livraison.depotage.categorie.nomCategorie}}</b>  </p>
+            <p>Quanté de carburant livré :<b>{{livraison.quantite}}</b> </p>
+            <p> Contient de l'eau: <b>{{livraison.depotage.contientEau}}</b> </p>
 
           </div>
-          <div class="col">
-            <p>densité : <b>{{depotage.densite}}</b>  </p>
-            <p>température : <b>{{depotage.temperatue}}</b></p>
+          <div class="col droit">
+            <p>Densité : <b>{{livraison.depotage.densite}}</b>  </p>
+            <p>Température : <b>{{livraison.depotage.temperatue}}</b></p>
           </div>
-          
+
         </div>
 
         <div class="row" id="ligne1">
           <h3> Autres Informations</h3>
 
           <div class="col">
-            <p>Cuve : <b>{{depotage.cuve.nomCuve}}</b> </p>
-            <p> Mesure avant dépotage :<b>{{depotage.quantiteAvant}}</b> </p>
-            <p>Coullage : <b>{{depotage.coullage}}</b> </p>
+            <p>Cuve : <b>{{livraison.depotage.cuve.nomCuve}}</b> </p>
+            <p> Mesure avant dépotage :<b>{{livraison.depotage.quantiteAvant}}</b> </p>
+            <p>Coullage : <b>{{livraison.depotage.coullage}}</b> </p>
           </div>
-          <div class="col">
-            <p> Quantité attendu :<b>{{depotage.quantiteTheorique}}</b> </p>
-            <p> Messure après dépotage: <b>{{depotage.quantiteApres}}</b> </p>
-            <p> Manquant : <b>{{depotage.ecart}}</b> </p>
+          <div class="col droit">
+            <p> Quantité attendu :<b>{{livraison.depotage.quantiteTheorique}}</b> </p>
+            <p> Messure après dépotage: <b>{{livraison.depotage.quantiteApres}}</b> </p>
+            <p> Manquant : <b>{{livraison.depotage.ecart}}</b> </p>
           </div>
-          
-        </div>     
-        
+
+        </div>
+
       </div><br><br>
 
 
@@ -63,18 +63,18 @@
         <div class="col">
           <p>Le Gérant</p><br><br><br>
           <p>Mr Alassane Ouedraogo</p>
-          
+
         </div>
         <div class="col"></div>
         <div class="col">
           <p id="nomliv">Le Livreur</p><br><br><br>
-          <p id="nomliv">{{depotage.livreur.nomLivreur}}</p>
+          <p id="nomliv">{{livraison.livreur.nomLivreur}}</p>
         </div>
       </div><br><br>
     </div>
-      
+
         <div class="button">
-          <button (click)="deleteDepot(depotage.id)" class="btn btn-primary">Imprimer</button>
+          <button class="btn btn-primary">Imprimer</button>
         </div>
 
 
@@ -96,4 +96,4 @@
           <div class="col">
             <a [routerLink]="['/historique']" class="btn btn-primary">Back to Depots List</a>
 
-          </div--->
+          </div-->

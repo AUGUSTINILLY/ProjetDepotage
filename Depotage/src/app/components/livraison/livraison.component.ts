@@ -23,7 +23,6 @@ export class LivraisonComponent implements OnInit{
   cuve: Cuve = new Cuve();
   cuves: Cuve[] = [];
 
-  produit: Produit = new Produit();
   produits: Produit[] = [];
 
   category: Categorie = new Categorie();
@@ -34,7 +33,7 @@ export class LivraisonComponent implements OnInit{
   depotage: Depotage = new Depotage();
   newDepotage: Depotage= new Depotage();
   livreur: Livreur = new Livreur();
-  
+
 
   constructor(
     private router : Router,
@@ -51,7 +50,7 @@ export class LivraisonComponent implements OnInit{
     this.getAllCuves();
     this.getAllCategories();
     this.route.params.subscribe(params => {
-      this.cuveId = +params['cuveId']; 
+      this.cuveId = +params['cuveId'];
     });
 
   }
@@ -86,10 +85,10 @@ export class LivraisonComponent implements OnInit{
     }, error => {
       console.error('Erreur lors de la création du livraison:', error);
       // Gérer l'erreur comme souhaité, par exemple afficher un message à l'utilisateur
-    
+
     });
   }
-  
+
 
   onSubmit(): void {
     this.personneService.createLivreur(this.livreur).subscribe(newLivreur => {
@@ -100,11 +99,17 @@ export class LivraisonComponent implements OnInit{
         this.newDepotage = depotage;
         this.livraison.depotage = this.newDepotage;
         console.log(this.livraison.depotage.id);
-        this.livraisonService.createDepotage(this.livraison).subscribe(() => {
+        this.livraisonService.createDepotage(this.livraison).subscribe((livraison: Livraison) => {
+          console.log('ID==', livraison.id);
+          console.log('qnt==', livraison.quantite);
+          this.cuveService.updateQuantiteCuve(livraison.depotage.cuve.idCuve, livraison.quantite).subscribe(result=> {
+              console.log(result);
+          });
+          this.router.navigate(['/details/' + livraison.id]);
         }, error => {
           console.error('Erreur lors de la création du livraison:', error);
           // Gérer l'erreur comme souhaité, par exemple afficher un message à l'utilisateur
-        
+
         });
       }, error => {
         console.error('Erreur lors de la création du dépotage:', error);
@@ -114,6 +119,6 @@ export class LivraisonComponent implements OnInit{
       console.error('Erreur lors de la création du livreur:', error);
       // Gérer l'erreur comme souhaité, par exemple afficher un message à l'utilisateur
     });
-      
+
   }
 }

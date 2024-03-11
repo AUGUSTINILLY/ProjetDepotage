@@ -23,7 +23,7 @@ public class Livraison {
     @ManyToOne
     private Livreur livreur;
     @ManyToOne
-    private Produit produit;
+    private Depotage depotage;
 
     public Long getId() {
         return id;
@@ -63,11 +63,11 @@ public class Livraison {
         this.livreur = livreur;
     }
 
-    public Produit getProduit() {
-        return produit;
+    public Depotage getDepotage() {
+        return depotage;
     }
 
-    public void setProduit(Produit produit) {
-        this.produit = produit;
+    public void setDepotage(Depotage depotage) {
+        this.depotage = depotage;
     }
 }

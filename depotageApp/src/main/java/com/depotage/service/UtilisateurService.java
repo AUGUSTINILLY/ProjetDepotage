@@ -67,7 +67,21 @@ public class UtilisateurService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("Aucun utilisateur ne corespond à cet identifiant"));
 
     }
+    public Utilisateur lireUser(String username) throws UsernameNotFoundException{
+        // Implémentez la logique pour récupérer l'utilisateur par son nom d'utilisateur
+        return utilisateurRepository
+                .findByNom(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Aucun utilisateur ne corespond à cet identifiant"));
 
+    }
+
+    public Utilisateur getUser(int id) throws UsernameNotFoundException{
+        // Implémentez la logique pour récupérer l'utilisateur par son nom d'utilisateur
+        return utilisateurRepository
+                .findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("Aucun utilisateur ne corespond à cet identifiant"));
+
+    }
 
 
 }

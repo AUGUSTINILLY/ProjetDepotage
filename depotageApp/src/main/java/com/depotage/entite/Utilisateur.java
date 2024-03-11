@@ -27,6 +27,7 @@ public class Utilisateur implements UserDetails {
 
     private String email;
     private String nomUser;
+    private String contact;
 
     private boolean actif = true;
 
@@ -36,6 +37,14 @@ public class Utilisateur implements UserDetails {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getMdp() {

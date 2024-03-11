@@ -1,6 +1,8 @@
+import { LivaisonService } from './../../services/livaison.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Depotage } from 'src/app/models/depotage';
+import { Livraison } from 'src/app/models/livraison';
 import { DepotageService } from 'src/app/services/depotage';
 
 @Component({
@@ -10,9 +12,9 @@ import { DepotageService } from 'src/app/services/depotage';
 })
 export class RapportComponent implements OnInit{
   id: number=1;
-  depotage: Depotage = new Depotage();
+  livraison: Livraison = new Livraison();
   constructor(private route: ActivatedRoute,private router: Router,
-    private depotageService: DepotageService) { }
+    private livaisonService: LivaisonService) { }
 
   ngOnInit() {
     const idParam = this.route.snapshot.paramMap.get('id');
@@ -27,29 +29,16 @@ export class RapportComponent implements OnInit{
 
   }
 
-
-
   list(){
     this.router.navigate(['historique']);
   }
 
 
   getdepot(id: number): void{
-    this.depotageService.getDepotage(id).subscribe( data =>{
-      this.depotage= data;
+    this.livaisonService.getDepotage(id).subscribe( data =>{
+      this.livraison= data;
       console.log(data);
     });
 
   }
-
-  deleteDepot(id: number) {
-    this.depotageService.deleteDepotage(id)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.router.navigate(['/historique'])
-        },
-        error => console.log(error));
-  }
-
 }

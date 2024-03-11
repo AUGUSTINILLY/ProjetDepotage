@@ -1,4 +1,4 @@
-<div class="container">
+<!--div class="container">
     <div class="card">
       <div class="card-body">
         <h1><b>CONNEXION</b></h1>
@@ -41,34 +41,33 @@
         </div>
       </div>
     </div>
-</div>
-<!--div class="container">
-  <h1 class="titre"> CONNEXION </h1>
+</div-->
+<div class="container">
   <div class="card">
-
     <div class="card-body">
+      <h1><b>CONNEXION</b></h1>
       <div class="row">
         <div class="col donnees">
           <form #f="ngForm" action="post" >
 
               <div class="form-group input-group">
-                <label for="email" class="form-label">Email</label>
+                <label for="nom" class="form-label">Username</label>
                 <div class="input-group">
-                  <input type="email" [(ngModel)]="user.email" class="form-control" name="email" ngModel required #e="ngModel">
+                  <input type="text" [(ngModel)]="utilisateur.nom" class="form-control" name="nom" ngModel required #e="ngModel">
                   <span class=" input-group-text material-icons">
-                    mail_outline
+                    personne
                   </span>
                 </div>
 
               </div>
               <div class="alert alert-danger" *ngIf="e.invalid && e.touched">
-                le champs Email est réquis .
+                Username est réquis .
               </div>
               <br>
               <div class="form-group">
                   <label for="Password" class="form-label">Mot de passe</label>
                   <div class="input-group">
-                    <input type="password" [(ngModel)]="user.mdp" class="form-control" name="mdp" ngModel required #mp="ngModel">
+                    <input type="password" [(ngModel)]="utilisateur.mdp" class="form-control" name="mdp" ngModel required #mp="ngModel">
                     <span class="input-group-text material-icons">
                       lock_open
                     </span>
@@ -78,7 +77,12 @@
                 le mot de passe est réquis .
               </div>
               <br>
-              <button type="submit" class="btn btn-primary" [disabled]="f.invalid" (click)="login()">Se Connecter</button><span> <a routerLink="/inscription"> je n'ai pas de compte</a></span>
+              <button type="submit" class="btn btn-primary" [disabled]="f.invalid" (click)="login()">Se Connecter</button>
+              <div id="url">
+                <a routerLink="/inscription"> je n'ai pas de compte</a>
+              </div><br><br>
+              <div *ngIf="error" class="error">{{ error }}</div>
+
           </form>
         </div>
         <div class="col" id="img1">
@@ -89,4 +93,4 @@
       </div>
 
     </div>
-</div-->
+</div>

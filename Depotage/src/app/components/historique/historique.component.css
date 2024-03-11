@@ -2,18 +2,7 @@
 background-color: aqua;
 max-height: 100vh;
 }
-.recherche
-{
-  width: 500px;
-}
-.ligne{
-  display: inline-flex;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  justify-content: center;
 
-}
 a{
   text-decoration: none;
 }
@@ -57,4 +46,18 @@ h2{
 .donnees .col{
   padding-left: 10%;
   font-size: 20px;
+}
+#bouttons{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.bouttonsclick{
+  margin-left: 20px;
+  border: 1px ;
+}
+#input, .btn{
+  width: 200px;
 }

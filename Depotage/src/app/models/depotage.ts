@@ -4,7 +4,7 @@ import { Cuve } from "./cuve";
 import { Livreur } from "./livreur";
 import { Categorie } from './categorie';
 
-export class Depotage{
+export class Depotage {
   id: number = 0;
   categorie: Categorie = new Categorie();
   densite: number = 0;

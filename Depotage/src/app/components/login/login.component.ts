@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { Utilisateur } from 'src/app/models/Utilisateur';
 import { AuthentifcationService } from 'src/app/services/authentifcation.service';
@@ -7,16 +7,19 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
 
 @Component({
   selector: 'app-login',
+  template: '<app-login [userConnecte]= currentUser></app-login>',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent  {
 
   utilisateur: Utilisateur = new Utilisateur();
+  currentUser: Utilisateur = new Utilisateur();
   reussite: boolean = false;
   username = '';
   password = '';
   error = '';
+  id?: number= 0;
 
   constructor(private authService: AuthentifcationService, private router: Router) { }
 
@@ -27,6 +30,9 @@ export class LoginComponent  {
         localStorage.setItem('currentUser', JSON.stringify(response));
         this.reussite = true;
         console.log(response);
+        //this.currentUser = response.id;
+        this.id = response.id;
+        console.log("'les infos du user", this.id);
         this.router.navigate(['/dashboard']);
       },
       error => {

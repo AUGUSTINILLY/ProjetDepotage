@@ -39,6 +39,7 @@ public class DepotageController {
 
     @PostMapping("/depotage")
     public Depotage createdepot( @RequestBody Depotage depotage) {
+
         return depotageRepository.save(depotage);
     }
 

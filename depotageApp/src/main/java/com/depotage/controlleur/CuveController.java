@@ -2,9 +2,11 @@ package com.depotage.controlleur;
 
 import com.depotage.entite.Cuve;
 import com.depotage.entite.Cuve;
+import com.depotage.entite.UpdateQuantiteDto;
 import com.depotage.exception.ResourceNoFoundException;
 import com.depotage.repository.CuveRepository;
 import com.depotage.repository.CuveRepository;
+import com.depotage.service.CuveService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,8 @@ public class CuveController {
     @Autowired
     private CuveRepository cuveRepository;
 
+    @Autowired
+    private CuveService cuveService;
     @GetMapping("/cuve")
     public List<Cuve> getAllCuve() {
         return cuveRepository.findAll();
@@ -55,26 +59,10 @@ public class CuveController {
         final Cuve updateCuve = cuveRepository.save(Cuve);
         return ResponseEntity.ok(updateCuve);
     }
+
     @PutMapping("/cuveQuantite/{id}")
-    public ResponseEntity<?> updateCuveQuantite(@PathVariable(value = "id") Long id,
-                                           @RequestBody int quantitelivre) throws ResourceNoFoundException.ResourceNotFoundException {
-        Cuve Cuve = cuveRepository.findById(Math.toIntExact(id))
-                .orElseThrow(() -> new ResourceNoFoundException.ResourceNotFoundException("Cuve not found for this id :: " + id));
-
-        Cuve.setQuanteducuve(Cuve.getQuanteducuve() + quantitelivre);
-
-        final Cuve updateCuve = cuveRepository.save(Cuve);
-        return ResponseEntity.ok(updateCuve);
-    }
-
-    @PutMapping("/updateQuantite/{id}")
-    public ResponseEntity<?> updateQuantiteCarburant(@PathVariable Long id, @RequestBody int quantiteLivre) {
-        Cuve cuve = cuveRepository.findById(Math.toIntExact(id)).orElse(null);
-        if (cuve == null) {
-            return ResponseEntity.notFound().build();
-        }
-        cuve.setQuanteducuve(cuve.getQuanteducuve() + quantiteLivre);
-        cuveRepository.save(cuve);
+    public ResponseEntity<?> updateQuantiteCuve(@PathVariable long id, @RequestBody UpdateQuantiteDto dto) {
+        cuveService.mettreAJourQuantiteCuve(id, dto.getQuantiteToAdd());
         return ResponseEntity.ok().build();
     }
     @DeleteMapping("/cuve/{id}")

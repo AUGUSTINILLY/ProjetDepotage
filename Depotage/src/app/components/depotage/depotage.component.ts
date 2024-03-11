@@ -30,8 +30,6 @@ export class DepotageComponent implements OnInit{
   nouveauLivreur: Livreur = new Livreur();
   cuve: Cuve= new Cuve();
   cuves: Cuve[] = [];
-  produits: Produit[] = [];
-  produit: Produit = new Produit();
   cuvedepote: Cuve = new Cuve();
   cuveId: number = 0;
   livre: number= 0;
@@ -73,7 +71,6 @@ export class DepotageComponent implements OnInit{
     //this.getAllCategories();
     this.getAllCuves();
     //this.getAllLivreurs();
-    this.getAllProduits();
     this.route.params.subscribe(params => {
       this.cuveId = +params['cuveId']; // Supposant que vous avez un paramètre 'cuveId' dans votre route
     });
@@ -81,15 +78,7 @@ export class DepotageComponent implements OnInit{
   }
 
 
-  getAllProduits(){
-    this.produits=[];
-    this.produitService.getAllProduit().subscribe(
-      result => {
-        this.produits = result;
-
-      }
-    )
-  }
+ 
 
 
   getAllCuves(){
