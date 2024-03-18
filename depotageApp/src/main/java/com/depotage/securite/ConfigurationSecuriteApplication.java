@@ -41,7 +41,7 @@ public class ConfigurationSecuriteApplication {
                                                 .requestMatchers(POST,"/activation").permitAll()
                                                 .requestMatchers(POST,"/connexion").permitAll()
                                                 .requestMatchers(POST,"/livraison").permitAll()
-                                                .requestMatchers(GET,"/connexion/{id}").permitAll()
+                                                .requestMatchers(PUT,"/update/{id}").permitAll()
                                                 .requestMatchers(GET,"/livraison/{id}").permitAll()
                                                 .requestMatchers(GET,"/livraison").permitAll()
                                                 .requestMatchers(DELETE,"/livraison/{id}").permitAll()

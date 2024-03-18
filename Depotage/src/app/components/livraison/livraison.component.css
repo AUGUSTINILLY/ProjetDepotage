@@ -1,0 +1,17 @@
+.titre{
+  text-align: center;
+  justify-content: center;
+}
+form{
+  margin-top: 50px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.button
+{
+  text-align: center;
+  justify-content: center;
+}
+button{
+  width: 300px;
+}

@@ -55,3 +55,6 @@ span{
 .input-group-text, .material-icons{
   max-width: 30px;
 }
+.error{
+  color: red;
+}

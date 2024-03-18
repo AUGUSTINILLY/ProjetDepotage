@@ -4,6 +4,7 @@ import com.depotage.dto.AuthentificationDTO;
 import com.depotage.entite.Livraison;
 import com.depotage.entite.Utilisateur;
 import com.depotage.exception.ResourceNoFoundException;
+import com.depotage.repository.UtilisateurRepository;
 import com.depotage.securite.JwtService;
 import com.depotage.service.UtilisateurService;
 import lombok.AllArgsConstructor;
@@ -27,11 +28,23 @@ public class UtilisateurControlleur {
 
     private AuthenticationManager authenticationManager;
     private UtilisateurService utilisateurService;
+    private UtilisateurRepository utilisateurRepository;
     private JwtService jwtService;
 
     @PostMapping(path = "inscription")
     public void inscription(@RequestBody Utilisateur utilisateur) {
         this.utilisateurService.inscription(utilisateur);
+    }
+    @PutMapping("update/{id}")
+    public Utilisateur mettreAJourInformations(@PathVariable Long id, @RequestBody Utilisateur utilisateur) throws ResourceNoFoundException.ResourceNotFoundException {
+        // Vérifier si l'utilisateur existe
+        if (!utilisateurRepository.existsById(Math.toIntExact(id))) {
+            throw new ResourceNoFoundException.ResourceNotFoundException("Utilisateur avec l'ID " + id + " n'existe pas.");
+        }
+
+        // Mettre à jour les informations de l'utilisateur
+        utilisateur.setId(Math.toIntExact(id)); // Assurez-vous que l'ID de l'utilisateur est correct
+        return utilisateurService.mettreAJourInformations(utilisateur);
     }
 /*
     @PostMapping(path = "activation")

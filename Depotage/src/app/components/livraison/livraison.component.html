@@ -1,5 +1,7 @@
 <div class="container">
-  <h1>Enregistrer un dépotage</h1>
+  <div class="titre">
+    <h1>Enregistrer un dépotage</h1>
+  </div>
   <form (ngSubmit)="onSubmit()" #depotageForm="ngForm">
     <div class="row">
       <div class="col">
@@ -72,10 +74,10 @@
           <label for="quantiteAvant" class="form-label">Quantité Avant : </label>
           <input [(ngModel)]="depotage.quantiteAvant" type="number" class="form-control" id="quantiteAvant" name="quantiteAvant" required>
         </div>
-        
+
       </div>
       <div class="col">
-        
+
         <div class="mb-3">
           <label for="quantiteApres" class="form-label">Quantité Après : </label>
           <input [(ngModel)]="depotage.quantiteApres" type="number" class="form-control" id="quantiteApres" name="quantiteApres" required>

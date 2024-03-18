@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'details/:id', component: RapportComponent},
   {path: 'modifier/:id', component: UpdateComponent},
   {path: 'depotage', component: LivraisonComponent, canActivate: [AuthGuard]},
-  {path: 'profil/:id', component: ProfilComponent, canActivate: [AuthGuard]},
+  {path: 'profil', component: ProfilComponent, canActivate: [AuthGuard]},
 
 ];
 

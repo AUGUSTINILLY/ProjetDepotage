@@ -5,7 +5,7 @@
     <h1>DEPOTAGE</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group me-2">
-        <a [routerLink]="'/profil/' + currentUser.id" *ngIf="isLoggedIn"><div class="user"></div></a>
+        <a routerLink="profil" *ngIf="isLoggedIn"><div class="user"></div></a>
         <div class="bouton" *ngIf="isLoggedIn"><button (click)="deconnecter()" class="btn btn-sm btn-secondary">Se deconnecter</button></div>
         <div class="bouton" *ngIf="!isLoggedIn"><a routerLink="connexion" class="btn btn-sm btn-secondary">Se connecter</a></div>
         <div class="bouton" *ngIf="!isLoggedIn"><a routerLink="inscription" class="btn btn-sm btn-secondary">S'inscrire</a></div>

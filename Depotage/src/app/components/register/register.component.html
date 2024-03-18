@@ -3,85 +3,94 @@
 
 
         <h1> <b>INSCRIPTION</b>  </h1>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label for="" class="form-label">
-              Nom et Prenom
-              </label>
-              <div class="input-group">
-                <input class="form-control" type="text" [(ngModel)]="utilisateur.nomUser" placeholder="Nom et prenom">
-                <span class="input-group-text material-icons">
-                  personne
-                </span>
-              </div>
-            </div><br><br><div class="form-group">
-              <label for="" class="form-label">
-              Adresse E-mail
-              </label>
-              <div class="input-group">
-                <input class="form-control" type="email" [(ngModel)]="utilisateur.email" placeholder="Adresse email">
-                <span class="input-group-text material-icons">
-                  mail_outline
-                </span>
-              </div>
-            </div><br><br>
-            <div class="form-group">
-              <label for="" class="form-label">
-              Mot de passe
-              </label>
-              <div class="input-group">
-                <input class="form-control" type="password" [(ngModel)]="utilisateur.mdp" placeholder="Mot de passe">
-                <span class="input-group-text material-icons">
-                  lock_open
-                </span>
-              </div>
-            </div><br><br>
-            <button class="btn btn-lg btn-primary" (click)="register()">S'inscrire</button>
+        <form #f="ngForm" action="post">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="" class="form-label">
+                Nom et Prenom
+                </label>
+                <div class="input-group">
+                  <input class="form-control" type="text" [(ngModel)]="utilisateur.nomUser" placeholder="Nom et prenom" ngModel required>
+                  <span class="input-group-text material-icons">
+                    personne
+                  </span>
+                </div>
+              </div><br><br><div class="form-group">
+                <label for="" class="form-label">
+                Adresse E-mail
+                </label>
+                <div class="input-group">
+                  <input class="form-control" type="email" [(ngModel)]="utilisateur.email" placeholder="Adresse email" ngModel required>
+                  <span class="input-group-text material-icons">
+                    mail_outline
+                  </span>
+                </div>
+              </div><br><br>
+              <div class="form-group">
+                <label for="" class="form-label">
+                Mot de passe
+                </label>
+                <div class="input-group">
+                  <input class="form-control" type="password" [(ngModel)]="utilisateur.mdp" placeholder="Mot de passe" ngModel required>
+                  <span class="input-group-text material-icons">
+                    lock_open
+                  </span>
+                </div>
+              </div><br><br>
+            </div>
+            <div class="col">
+
+              <div class="form-group">
+                <label for="" class="form-label">
+                Username
+                </label>
+                <div class="input-group">
+                  <input class="form-control" type="text" [(ngModel)]="utilisateur.nom" placeholder="Nom d'utilisateur" ngModel required>
+                  <span class="input-group-text material-icons">
+                    personne
+                  </span>
+                </div>
+              </div><br><br>
+
+              <div class="form-group">
+                <label for="" class="form-label">
+                Contact
+                </label>
+                <div class="input-group">
+                  <input class="form-control" type="tel" [(ngModel)]="utilisateur.contact" placeholder="numero de telephone" ngModel required>
+                  <span class="input-group-text material-icons">
+                    phone
+                  </span>
+                </div>
+              </div><br><br>
+
+              <div class="form-group">
+                <label for="" class="form-label">
+                Confirmer mot de passe
+                </label>
+                <div class="input-group">
+                  <input class="form-control" type="password" [(ngModel)]="utilisateur.remdp" placeholder="confirmer votre mot de passe" ngModel required>
+                  <span class="input-group-text material-icons">
+                    lock_open
+                  </span>
+                </div>
+              </div><br><br>
+
+            </div>
           </div>
-          <div class="col">
-
-            <div class="form-group">
-              <label for="" class="form-label">
-              Username
-              </label>
-              <div class="input-group">
-                <input class="form-control" type="text" [(ngModel)]="utilisateur.nom" placeholder="Nom d'utilisateur">
-                <span class="input-group-text material-icons">
-                  personne
-                </span>
-              </div>
-            </div><br><br>
-
-            <div class="form-group">
-              <label for="" class="form-label">
-              Contact
-              </label>
-              <div class="input-group">
-                <input class="form-control" type="tel" [(ngModel)]="utilisateur.contact" placeholder="numero de telephone">
-                <span class="input-group-text material-icons">
-                  phone
-                </span>
-              </div>
-            </div><br><br>
-
-            <div class="form-group">
-              <label for="" class="form-label">
-              Confirmer mot de passe
-              </label>
-              <div class="input-group">
-                <input class="form-control" type="password" [(ngModel)]="utilisateur.remdp" placeholder="confirmer votre mot de passe">
-                <span class="input-group-text material-icons">
-                  lock_open
-                </span>
-              </div>
-            </div><br><br>
-            <div id="url">
-              <a routerLink="/connexion">Je n'ai pas de Compte</a>
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-lg btn-primary" [disabled]="f.invalid" (click)="register()">S'inscrire</button>
+            </div>
+            <div class="col" id="url">
+              <a routerLink="/connexion" >J'ai déjà un Compte</a>
             </div>
           </div>
           <div *ngIf="error" class="error">{{ error }}</div>
-        </div>
+
+        </form>
+
 
 
     </div>

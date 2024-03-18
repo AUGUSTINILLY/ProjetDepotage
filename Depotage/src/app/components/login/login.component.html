@@ -1,56 +1,12 @@
-<!--div class="container">
-    <div class="card">
-      <div class="card-body">
-        <h1><b>CONNEXION</b></h1>
-        <div *ngIf="error" class="error">{{ error }}</div>
-        <div class="row">
-
-            <div class="col donnees">
-              <div >
-                <div class="form-goup">
-                  <label for="" class="form-label">username </label>
-                  <div class="input-group">
-                    <input class="form-control" type="text" class="form-control" [(ngModel)]="utilisateur.nom" placeholder="Nom d'utilisateur">
-                    <span class="input-group-text material-icons">
-                      personne
-                    </span>
-                  </div>
-                </div><br><br>
-                <div class="form-group">
-                  <label for="" class="form-label">Mot de passe </label>
-                  <div class="input-group">
-                    <input class="form-control" type="password" class="form-control" [(ngModel)]="utilisateur.mdp" placeholder="Mot de passe">
-                    <span class="input-group-text material-icons">
-                      lock_open
-                    </span>
-                  </div>
-                </div><br><br>
-                    <button type="submit" (click)="login()" class="btn  btn-primary">Connexion</button><br><br>
-                    <div id="url">
-                      <a routerLink="/inscription">Je n'ai pas de Compte</a>
-                    </div>
-              </div>
-            </div>
-
-
-          <div class="col" id="img1">
-            <div class="image" >
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-</div-->
 <div class="container">
   <div class="card">
     <div class="card-body">
       <h1><b>CONNEXION</b></h1>
       <div class="row">
-        <div class="col donnees">
+
           <form #f="ngForm" action="post" >
 
-              <div class="form-group input-group">
+              <div class="form-group">
                 <label for="nom" class="form-label">Username</label>
                 <div class="input-group">
                   <input type="text" [(ngModel)]="utilisateur.nom" class="form-control" name="nom" ngModel required #e="ngModel">
@@ -60,9 +16,7 @@
                 </div>
 
               </div>
-              <div class="alert alert-danger" *ngIf="e.invalid && e.touched">
-                Username est réquis .
-              </div>
+
               <br>
               <div class="form-group">
                   <label for="Password" class="form-label">Mot de passe</label>
@@ -73,9 +27,7 @@
                     </span>
                   </div>
               </div>
-              <div class="alert alert-danger" *ngIf="mp.invalid && mp.touched">
-                le mot de passe est réquis .
-              </div>
+
               <br>
               <button type="submit" class="btn btn-primary" [disabled]="f.invalid" (click)="login()">Se Connecter</button>
               <div id="url">
@@ -84,12 +36,7 @@
               <div *ngIf="error" class="error">{{ error }}</div>
 
           </form>
-        </div>
-        <div class="col" id="img1">
-          <div class="image" >
 
-          </div>
-        </div>
       </div>
 
     </div>

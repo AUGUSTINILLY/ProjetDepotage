@@ -12,6 +12,7 @@ export class AuthentifcationService {
 
   private apiUrl = 'http://localhost:8080/api/connexion'; // API URL
   private baseUrl = 'http://localhost:8080/api/inscription'; // API URL
+  private Url = 'http://localhost:8080/api/update'; // API URL
 
   constructor(private http: HttpClient) { }
 
@@ -33,8 +34,9 @@ export class AuthentifcationService {
   register(user: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}`, user);
   }
-  getUserInfos(id: number): Observable<Utilisateur> {
-    return this.http.get<Utilisateur>(`${this.apiUrl}/${id}`);
+
+  updateUser(id: number, utilisateur: Utilisateur): Observable<Utilisateur> {
+    return this.http.put<Utilisateur>(`${this.Url}/${id}`, utilisateur);
   }
 
   isLoggedIn(): Observable<boolean> {

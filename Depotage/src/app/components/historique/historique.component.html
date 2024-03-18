@@ -3,9 +3,18 @@
     <div class="bouttonsclick">
       <button class="btn btn-outline-success " (click)="ListeLivraison()"> livraisons du mois</button>
     </div>
-    <div class="bouttonsclick">
-      <form>
-        <input type="datetime" [(ngModel)]="numeroFiltre" name="nueroFiltre" id="input" class="form-control" placeholder="rechercher par la date">
+    <div class=" form-group bouttonsclick">
+      <form action="post">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="datetime" [(ngModel)]="dateLivraison" name="nueroFiltre" id="input" class="form-control" placeholder="rechercher par la date">
+            <span class=" input-group-text">
+              <button id="btnRecherche" type="submit" (click)="getLivraison()">rech</button>
+            </span>
+          </div>
+
+        </div>
+
       </form>
     </div>
     <div class="bouttonsclick">
@@ -17,14 +26,14 @@
     <div class="bouttonsclick">
       <button class="btn btn-outline-primary" (click)="ListeLivraisonCuve3()"> Cuve3</button>
     </div>
-    
+
 
   </div>
 
 
       <h2>Historique des livraisons</h2>
       <div *ngIf="isClick">
-        <div class="row">
+        <div class="row infos">
           <div class="col">
             <h3>Nom de la cuve: <b>{{nom}}</b>  </h3>
 
@@ -38,14 +47,30 @@
 
           </div>
         </div>
-       
+
       </div>
-      <div class="message">
+      <div *ngIf="isClick2">
+        <div class="row infos">
+          <div class="col">
+
+          </div>
+          <div class="col">
+            <h3>nombre de livfraisons: <b> {{nombre}} </b> </h3>
+
+          </div>
+          <div class="col">
+            <h3>Total Carburant Livré : <b>{{sommeQuantiteCarburant}}</b> </h3>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="message" *ngIf="errorExist">
         {{message}}
       </div>
       <div class="row" *ngFor="let livraison of livraisons">
 
-        <div *ngIf="livraison.date == numeroFiltre || numeroFiltre == null">
+        <div>
           <a [routerLink]="'/details/' + livraison.id">
             <div class="card my-sm-3">
               <div class="card-body" >

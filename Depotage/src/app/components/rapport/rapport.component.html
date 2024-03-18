@@ -2,7 +2,7 @@
   <div class="card">
     <div class="row">
       <div class="col"><p id="img1"></p></div>
-      <div class="col"><h1><b>Rapport de Depotage</b></h1> </div>
+      <div class="col"><h1>Rapport de Depotage</h1> </div>
       <div class="col"></div>
     </div>
     <div class="contenu">
@@ -62,7 +62,7 @@
       <div class="row signature">
         <div class="col">
           <p>Le Gérant</p><br><br><br>
-          <p>Mr Alassane Ouedraogo</p>
+          <p>{{currentUser.nomUser}} </p>
 
         </div>
         <div class="col"></div>
@@ -74,7 +74,7 @@
     </div>
 
         <div class="button">
-          <button class="btn btn-primary">Imprimer</button>
+          <button class="btn btn-primary" (click)="printPage()">Imprimer</button>
         </div>
 
 

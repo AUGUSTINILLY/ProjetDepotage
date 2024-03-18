@@ -42,8 +42,17 @@ public class UtilisateurService implements UserDetailsService {
         utilisateur.setRole(roleUtilisateur);
         this.utilisateurRepository.save(utilisateur);
 
-        utilisateur = this.utilisateurRepository.save(utilisateur);
+        //utilisateur = this.utilisateurRepository.save(utilisateur);
         //this.validationService.enregistrer(utilisateur);
+    }
+    public Utilisateur mettreAJourInformations(Utilisateur utilisateur) {
+        String mdpCrypte = this.passwordEncoder.encode(utilisateur.getMdp());
+        utilisateur.setMdp(mdpCrypte);
+
+        Role roleUtilisateur = new Role();
+        roleUtilisateur.setLibelle(TypeDeRole.GERANT);
+        utilisateur.setRole(roleUtilisateur);
+        return utilisateurRepository.save(utilisateur);
     }
 /*
     public void activation(Map<String, String> activation) {

@@ -14,20 +14,21 @@ import { Categorie } from 'src/app/models/categorie';
 })
 export class HistoriqueComponent implements OnInit{
 
-  numeroFiltre?: string;
   depotages: Depotage[]= [];
   depotagefilter: Depotage[]= [];
-  Livraison: Livraison = new Livraison();
+  livraison: Livraison = new Livraison();
   livraisons : Livraison[]= [];
   listeCuve : Livraison[]= [];
   sommeQuantiteCarburant: number = 0;
-  date: String = "";
+  dateLivraison: string = "";
   message: string = "";
   dateAuj: Date = new Date();
   mois: string = "";
   nom: string = "";
   nombre: number = 0;
   isClick: boolean = false;
+  isClick2: boolean = false;
+  errorExist: boolean = false;
   constructor(
     private router: Router,
     private depotageService: DepotageService,
@@ -39,16 +40,39 @@ export class HistoriqueComponent implements OnInit{
 
   }
 
+  getLivraison(): void{
 
+    if(this.dateLivraison){
+      this.isClick2 = false;
+      this.isClick = false;
+      this.livraisons = [];
+      this.livaisonService.getDepotageList().subscribe(
+        (response: Livraison[]) => {
+          response.forEach(livraison => {
+            if (livraison.date === this.dateLivraison){
+              this.livraison = livraison;
+            }
+          });
+          this.livraisons.push(this.livraison);
+          this.dateLivraison = "";
+        }
+      );
+    }
+
+  }
   liste() {
+    this.isClick2 = true;
     this.livraisons = [];
     this.livaisonService.getDepotageList().subscribe(
       result => {
         this.livraisons = result;
+        this.sommeQuantiteCarburant = 0;
+        this.livraisons.forEach(livraison => {
+          this.sommeQuantiteCarburant += livraison.quantite; // Supposons que 'quantite' est le champ contenant la quantité de carburant livré
+        });
+        this.nombre=this.livraisons.length;
         if(this.livraisons.length <= 0) {
           this.message ="Aucune Livraison Enregistrée dans la base de données."
-        }else {
-          this.livraisons = result;
         }
         console.log(this.livraisons);
       }
@@ -57,6 +81,7 @@ export class HistoriqueComponent implements OnInit{
 
 
   ListeLivraison(): void {
+    this.isClick2 = true;
     this.isClick = false;
     this.livraisons = [];
     this.livaisonService.getDepotageList().subscribe(
@@ -73,6 +98,11 @@ export class HistoriqueComponent implements OnInit{
 
 
         this.livraisons = livraisonsCeMois;
+        if(this.livraisons.length <= 0) {
+          this.message ="Aucune Livraison Enregistrée dans la base de données.";
+          this.errorExist = true;
+        }
+        this.nombre=this.livraisons.length;
         this.sommeQuantiteCarburant = 0;
         this.livraisons.forEach(livraison => {
           this.sommeQuantiteCarburant += livraison.quantite; // Supposons que 'quantite' est le champ contenant la quantité de carburant livré
@@ -88,6 +118,7 @@ export class HistoriqueComponent implements OnInit{
   }
 
   ListeLivraisonCuve1(): void {
+    this.isClick2 = false;
     this.isClick = true;
     this.nom = "Cuve1_Super"
     this.livraisons = [];
@@ -106,6 +137,10 @@ export class HistoriqueComponent implements OnInit{
 
 
         this.livraisons = livraisonCuve1;
+        if(this.livraisons.length <= 0) {
+          this.message ="Aucune Livraison Enregistrée dans la base de données.";
+          this.errorExist = true;
+        }
         this.nombre=this.livraisons.length;
         this.sommeQuantiteCarburant = 0;
         this.livraisons.forEach(livraison => {
@@ -121,6 +156,7 @@ export class HistoriqueComponent implements OnInit{
     );
   }
   ListeLivraisonCuve2(): void {
+    this.isClick2 = false;
     this.isClick = true;
     this.nom = "Cuve2_Super";
     this.livraisons = [];
@@ -139,6 +175,10 @@ export class HistoriqueComponent implements OnInit{
 
 
         this.livraisons = livraisonCuve1;
+        if(this.livraisons.length <= 0) {
+          this.errorExist = true;
+          this.message ="Aucune Livraison Enregistrée dans la base de données.";
+        }
         this.nombre=this.livraisons.length;
         this.sommeQuantiteCarburant = 0;
         this.livraisons.forEach(livraison => {
@@ -154,6 +194,7 @@ export class HistoriqueComponent implements OnInit{
     );
   }
   ListeLivraisonCuve3(): void {
+    this.isClick2 = false;
     this.isClick = true;
     this.nom = "Cuve_Gaz-oil";
     this.livraisons = [];
@@ -172,6 +213,10 @@ export class HistoriqueComponent implements OnInit{
 
 
         this.livraisons = livraisonCuve1;
+        if(this.livraisons.length <= 0) {
+          this.errorExist = true;
+          this.message ="Aucune Livraison Enregistrée dans la base de données.";
+        }
         this.nombre=this.livraisons.length;
         this.sommeQuantiteCarburant = 0;
         this.livraisons.forEach(livraison => {

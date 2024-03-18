@@ -36,16 +36,21 @@ h2{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 20px;
+  color: red;
+  font-weight: bolder;
 }
+
 .donnees{
   margin-left: 10%;
   margin-right: 10%;
   width: 80%;
 }
 .donnees .col{
-  padding-left: 10%;
   font-size: 20px;
+}
+.donnees .col b{
+  color: blue;
 }
 #bouttons{
   margin-top: 20px;
@@ -60,4 +65,21 @@ h2{
 }
 #input, .btn{
   width: 200px;
+}
+.infos{
+  border: 1px solid ;
+  height: 50px;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-left: 100px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.infos b{
+  font-size: 20px;
+  color: blue;
+}
+#btnRecherche
+{
+  border: 0px;
 }
